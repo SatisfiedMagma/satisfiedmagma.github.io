@@ -1,0 +1,11 @@
+---
+import MainLayout from '../layouts/mainlayout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<MainLayout pageTitle={frontmatter.title + "Pragyan Pranay"}>
+<meta charset="utf-8" />
+<h1>{frontmatter.title}</h1>
+<p>{frontmatter.author}</p>
+<slot />
+</MainLayout>

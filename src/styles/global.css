@@ -20,23 +20,25 @@ nav {
 	top: 0%;
 	z-index: 1000;
 	display: flex;
-    justify-content: space-between;
+	justify-content: space-between;
     padding: 1rem 2rem;
     align-items: center;
     height: 65px;
     background-color: #363062;
     font-weight: 400;
     color: white;
+	cursor: pointer;
 }
 
-nav ul {
-    display: flex;
+nav > .right > ul{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
 nav ul li {
     list-style-type: none;
     margin: 10px;
-    text-decoration: none;
 }
 
 nav ul li a {
@@ -51,17 +53,18 @@ nav ul li a {
 .dropdown-menu {
 	position: absolute;
 	top: 100%;
-	left: 0%;	
-	background: #363062;
+	left: -10%;
+	background-color: #363062;	
 	border-radius: 4px;
 	padding: 0.1rem 0.2rem 0.5rem 0.2rem;
 	min-width: 135px;
+	max-width: 150px;
 
     opacity: 0;
-	display: inline-block;
+	display: block;
     visibility: hidden;
 
-    transform: translateY(30px);
+    transform: translateY(10px);
 
     transition: 
         opacity 0.3s ease,
@@ -72,8 +75,7 @@ nav ul li a {
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(15px);
-	transition: 0s;
+    transform: translateY(0);
 }
 
 nav ul li a:hover {
@@ -82,8 +84,13 @@ nav ul li a:hover {
 }
 
 nav .left {
-    font-size: 35px;
-    padding: auto 1rem;
+    font-size: 32px;
+    padding: 0 1rem;
+}
+
+nav .left a {
+	text-decoration: none;
+	color: white;
 }
 
 footer {

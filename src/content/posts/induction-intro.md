@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
 title: 'Introduction to Induction'
 pubDate: 2022-07-01
 description: 'This is the first post of my new Astro blog.'
@@ -11,3 +10,4 @@ tags: ["astro", "blogging", "learning in public"]
 ---
 
 We'll prove a few theorems.
+

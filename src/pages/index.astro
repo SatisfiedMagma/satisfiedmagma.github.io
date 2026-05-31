@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/mainlayout.astro";
 import "../styles/home.css";
+import profile_img from '../assets/profile.jpeg';
 ---
 
 <MainLayout pageTitle="Pragyan Pranay | Home">
@@ -13,10 +14,9 @@ import "../styles/home.css";
 			<div class="quote-author">-Nishinoya, Haikyu</div>
 		</div>
 
-
 		<div class="home-image">
 			<img
-				src="/personal-website/src/assets/profile.jpeg"
+				src={profile_img.src}
 				alt="I know I'm handsome ;)"
 				width="300"
 			/>

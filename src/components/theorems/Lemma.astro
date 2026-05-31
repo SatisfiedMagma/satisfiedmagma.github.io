@@ -1,0 +1,44 @@
+---
+export interface Props {
+  title?: string;
+}
+const { title } = Astro.props;
+---
+
+<div class="lemma">
+  <div class="lemma-header">
+    <span class="lemma-label">Lemma <span class="lemma-number"></span></span>
+    {title && <span class="lemma-title">({title}) — </span>}
+  </div>
+  <div class="lemma-body"><slot /></div>
+</div>
+
+<style>
+  .lemma {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 7px solid rgb(102,51,153);
+    background-color: rgba(102,51,153,0.2);
+    border-radius: 2px;
+    counter-increment: lemma-counter;
+  }
+  .lemma-header {
+    display: inline;
+    color: rgba(102,51,153);
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  .lemma-body {
+    display: inline;
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+	.lemma-number::before {
+		content: counter(lemma-counter);
+	}
+	.lemma-title {
+		font-weight: normal;
+		font-style: italic;
+	}
+</style>

@@ -11,7 +11,8 @@
 body {
     font-family: "Funnel Sans", sans-serif;
     font-size: 20px;
-    background-color: #fbecd6;
+    /* background-color: #fbecd6; */
+	background-color: white;
     min-height: 100vh;
 }
 
@@ -23,7 +24,7 @@ nav {
 	justify-content: space-between;
     padding: 1rem 2rem;
     align-items: center;
-    height: 65px;
+    height: 80px;
     background-color: #363062;
     font-weight: 400;
     color: white;
@@ -42,7 +43,6 @@ nav ul li {
 }
 
 nav ul li a {
-    text-decoration: none;
     color: white;
 }
 
@@ -89,7 +89,6 @@ nav .left {
 }
 
 nav .left a {
-	text-decoration: none;
 	color: white;
 }
 
@@ -115,10 +114,24 @@ h3 {
     padding-bottom: 8px;
 }
 
+.content {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+
+.content > p {
+    line-height: 1.6;
+	margin-bottom: 0.5rem;
+	text-indent: 1em;
+}
+
+
 /* this selector selects p right after h_i where i = 1,2,3 */
-h1 + p,
-h2 + p,
-h3 + p {
+.content > h1 + p,
+.content > h2 + p,
+.content > h3 + p {
     text-indent: 0;
 }
 
@@ -126,14 +139,11 @@ h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
 }
 
-.content {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 2rem;
+a {
+	text-decoration: none;
 }
 
-p {
-    line-height: 1.6;
-	margin-bottom: 0.5rem;
-	text-indent: 1em;
+.content ol li {
+	list-style-position: inside;
+	line-height: 1.6;
 }

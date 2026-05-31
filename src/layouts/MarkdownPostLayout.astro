@@ -1,11 +1,48 @@
 ---
 import MainLayout from '../layouts/mainlayout.astro';
+import '../styles/blog_post.css';
+import '../styles/theorems.css'
 const { frontmatter } = Astro.props;
+
+function formatDate(date) {
+  const d = new Date(date);
+  const day = d.getDate();
+  const month = d.toLocaleString('default', { month: 'long' });
+  const year = d.getFullYear();
+  return `${day} ${month}, ${year}`;
+}
+const pubDate = formatDate(frontmatter.pubDate);
+
+let tags = frontmatter.tags || [];
+if (typeof tags === 'string') {
+  tags = tags.split(',').map(t => t.trim());
+} else if (!Array.isArray(tags)) {
+  tags = [];
+}
 ---
 
-<MainLayout pageTitle={frontmatter.title + "Pragyan Pranay"}>
-<meta charset="utf-8" />
-<h1>{frontmatter.title}</h1>
-<p>{frontmatter.author}</p>
-<slot />
+<MainLayout pageTitle={frontmatter.title + " | Pragyan Pranay"}>
+	<meta charset="utf-8" />
+	<div class="blog-header">
+		<h1>{frontmatter.title}</h1>
+		
+		<div class="description">
+			{frontmatter.description}
+		</div>
+
+		<div class="author">
+		<span class="date"><i class="nf nf-cod-calendar"></i> Published on: <span class="pubdate">{pubDate}</span></span> | <span class="author-text"><i class="nf nf-oct-person"> </i> Author: </span> {frontmatter.author}
+		</div>	
+
+		
+	{tags.length > 0 && (
+			<div class="tags">
+				{tags.map(tag => <span class="tag">{tag}</span>)}
+			</div>
+	)}
+
+		</div>
+	<div class="blog-content">	
+		<slot />
+	</div>
 </MainLayout>

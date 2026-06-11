@@ -3,7 +3,8 @@
         "year": 2026,
         "program": "B.Stat/B.Math",
         "paper": "UGB",
-        "solutionsLink": "/solutions/2026-UGB.pdf",
-        "discussionLink": "posts/isi_2026_discussion"
+        "solutionsLink": "/isi_solutions/UGB_2026/UGB_2026.pdf",
+		"texLink": "/isi_solutions/UGB_2026/UGB_2026.tex",
+        "discussionLink": "../writings/posts/isi_2026_discussion"
     } 
 ]

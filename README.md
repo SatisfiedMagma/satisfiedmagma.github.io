@@ -1,5 +1,3 @@
 # satisfiedmagma.github.io
 
-This is my personal-website which I'm going to use for
-primarily hosting my CV, projects and math blogs. I promise
-I will update this thing later.
+My personal website made with [Astro](https://astro.build/) hosted with GitHub Pages at https://www.satisfiedmagma.github.io

@@ -1,17 +1,16 @@
 ---
 title: "ISI Entrance 2026 UGB Disccusion"
-pubDate: 2026-05-24
+pubDate: 2026-06-11
 description: "We will discuss all the problems of the UGB section in detail, with different possible approaches. The main motive is to motivate how a student can discover the solution by themselves."
 author: 'Pragyan Pranay'
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
+    url: 'https://isiadms3public.s3.ap-south-1.amazonaws.com/images/isilogo.png'
+    alt: 'ISI Logo'
 tags: ["isi-entrance", "contest-math", "solutions"]
 ---
 import Lemma from '../../components/theorems/Lemma.astro';
 import Theorem from '../../components/theorems/Theorem.astro';
 import Claim from '../../components/theorems/Claim.astro'
-
 
 This is my first blog post and I know this is going to be a
 long one, but I really really want to deliver the best 
@@ -56,6 +55,7 @@ $$
 5. In the figure below, $ABCD$ is a square. The points $E, F, G, H$ lie on $AB, BC, CD, DA$, respectively, such that $EFGH$ is a square. The perimeter of $ABCD$ exceeds the perimeter of $EFGH$ by 32 units. Determine the length of the radius of the in-circle of $\Delta EBF$.
 
 <div class="center">
+
 ![Problem 5](isi_2026_discussion/geo_question.png)
 </div>
 
@@ -227,7 +227,7 @@ $1/(\ln x)^2$ has domain $\mathbb{R}_{>0} \setminus \{1\}$,
 where we remove $1$ to keep the denominator non-zero. The 
 range is slightly trickier, although with the aid of
 *AM-GM Inequality* on $(\ln x)^2$ and $1/(\ln x)^2$(both 
-are non-negative), you can at least that that $f(x) \ge 2$
+are non-negative), you can at least see that $f(x) \ge 2$
 for all $x$ in its domain.
 
 Clearly, there are no **zeroes** of this function $f$,
@@ -263,7 +263,7 @@ This gives $(\ln x)^3 \left((\ln x)^4 - 1 \right) > 0$.
 From here, putting $u = \ln x$, this is a standard
 inequality to solve, which upon solving yields
 $$
-f'(x) > 0 \iff \left( \frac 1 e , 1\right) \cup (e,\infty)
+f'(x) > 0 \iff x \in \left( \frac 1 e , 1\right) \cup (e,\infty)
 $$
 
 which basically gives us that $f$ is increasing over 
@@ -280,7 +280,7 @@ import rough_graph_f from './isi_2026_discussion/rough_graph.png';
 
 <div class="center">
 <figure>
-<img src={rough_graph_f.src} alt="Rough sketch of f without considering curvature" width="500" height="auto" />
+<img src={rough_graph_f.src} alt="Rough sketch of f without considering curvature" width="95%" height="auto" />
 <figcaption class="center"><b>Figure.</b>&nbsp;Rough sketch of f(without curvature)</figcaption>
 </figure>
 </div>
@@ -332,7 +332,7 @@ cubic polynomial, so it must have at least one root.
 Due to its strictly increasing nature, it must have 
 **only one root**. I think before proceeing we should try 
 to get an estimate. If we call $r(x) = 5x^3 + x^2 + x + 1$,
-then $r(0) = 1$, $r(-1) = -4$. Ah! By the polynomial
+then $r(0) = 1$, $r(-1) = -4$. Ah! The polynomial
 changes sign! So by the *Intermediate Value Theorem(IVT)*, 
 the root(call it $\alpha$) must lie between $-1$ and $0$.
 So, by *factor theorem*
@@ -357,7 +357,7 @@ import graph_h from './isi_2026_discussion/graph_of_h.png';
 
 <div class="center">
 <figure>
-<img src={graph_h.src} alt="Rough Graph of function h" width="500" height="auto" />
+<img src={graph_h.src} alt="Rough Graph of function h" width="99%" height="auto"/>
 <figcaption class="center"><b>Figure.</b>&nbsp; Rough sketch of h</figcaption>
 </figure>
 </div>
@@ -381,7 +381,7 @@ graphing $h$ on graph on Desmos and some AI asistance.*
 
 We will make two cases, whether $x \in (-\infty, -1)$ or 
 $(-1,0)$ or $x = -1$. The case $x = -1$ can be just checked
-by hand
+by hand.
 <br/>
 
 If $x < -1$, then $x^4 > 1 \iff x^4 - 1 > 0$. This gives 
@@ -436,14 +436,14 @@ import computer_Graph from './isi_2026_discussion/computer_graph.png'
 
 <div class="center" style="padding-bottom: 1rem">
 <figure>
-<img src={graphImg.src} alt="Graph" width="500" height="auto" />
+<img src={graphImg.src} alt="Graph" width="99%" height="auto" />
 <figcaption class="center"><b>Figure.</b>&nbsp; Hand-made graph of f </figcaption>
 </figure>
 </div>
 
 <div class="center" style="padding-bottom: 1rem">
 <figure>
-<img src={computer_Graph.src} alt="Graph made in Geogebra" width="600" height="auto" />
+<img src={computer_Graph.src} alt="Graph made in Geogebra" width="100%" height="auto" />
 <figcaption class="center"><b>Figure.</b>&nbsp;Computer generated graph of f</figcaption>
 </figure>
 </div>
@@ -976,13 +976,15 @@ again!
 ## 📌 Problem 7
 
 Okay, I'm totally dissapointed by this problem. This is
-basically USAMO 1974/1. This problem is so common and almost 
+basically [USAMO 1974/1](https://aops.com/community/c6h337922p1808245).
+This problem is so common and almost 
 anybody serious for the entrance must have solved this 
 problem once before... Anyways, let's see how to attack 
 this.
 
 So, we are basically given that $P \in \mathbb{Z}[x]$(just 
-a fancy notation for a polynomial with integer coefficients) and $m,n \in \mathbb{Z}$. Therefore, its quite obvious 
+a fancy notation for a polynomial with integer coefficients)
+and $m,n \in \mathbb{Z}$. Therefore, its quite obvious 
 that $P(m)$ and $P(n)$ are all integers. Essentially, they
 want us to show that $m - n \mid P(m) - P(n)$.
 
@@ -1211,12 +1213,244 @@ one can solve **part c)**. And the inductive solution,
 should cover both **part a)** and **part b)** together.
 
 
-**Personal Remarks:** Personally, I felt this is the hardest problem on the test. 
-You definitely need background to solve the problem on the 
-test and this is quite a test of your solution writing
-skills. I personally saw a solution via Riemann-Sums which 
-in my honest opinion is quite clever. I personally found a
-completely different solution, which is heavily technical 
-to write-up with induction. The good part is, all this is 
-well covered in JEE syllabus, but a true test of your proof 
-writing skills in exam.
+# Concluding Remarks
+
+These are my final remarks on the problems this year.
+
+1. This first part of the problem is particularly easy 
+and I feel it's quite difficult to write a _wrong_ solution.
+The second part is significantly more challenging, still 
+if done correctly, even blatant computations can give 
+a nice answer. There are several methods to solve this 
+problem, one can even think of resorting to parametric 
+coordinates for the circle, or bash it by putting 
+values into the equation of the circle. This problem 
+has appeared before which went as follows.
+
+<div class="center">
+
+**JEE Advanced(Subjective) 1997:**
+Let $C$ be any circle with center $(0,\sqrt{2})$. Prove
+that there can be at most two rational points on $C$. A 
+point is said to be a _rational point_ if both its 
+coordinates are rational numbers.
+</div>
+
+The taste of the problem is very similar and one who has 
+done this problem beforehand can solve it almost 
+immediately on exam. Regardless, there are quite a few 
+approaches to consider, making the problem at a
+**moderate level**.
+
+2. I personally hate this problem. Finding the nature of 
+the graph and the global minima and asymptote are typical 
+of JEE Mains level these days. Any progress which just 
+evaluates the derivative and finds the monotonicity 
+of the graph is just routine calculation, which I feel 
+should not be on the UGB section...
+
+On the other hand, finding the _curvature of the graph_ 
+is stupendously hard. I personally don't know how one is 
+supposed to solve that inequality on exam, I think 
+even showing that $f$ is concave and convex over certain 
+intervals is quite hard! I would put the problem on the 
+**easier side** of the exam, if the graders decide to give 
+full marks to the people who have just decoded the 
+monotonicity and asymptote of the graph. The problem easily
+becomes a **hard level problem** if graders penalize the 
+students for not finding the curvature of the graph.
+Although, after searching through the internet, apparently
+a sketch of the graph doesn't require you to find the
+curvature of the graph.
+
+3. Ahhh! This one is an _excellent trap_ for students. 
+First the language of the problem might be a little 
+intimidating; keeping that aside, attacking the problem 
+with AM-GM inequality seems a reasonable approach (just 
+because it's one of the first inequalities a student learns
+and the $n = 2$ case is quite motivating as well).
+The trap is and indeed the main meat of the problem is to 
+determine the equality case. You just have to solve a 
+few equations, although writing down details that 
+the point at which minimum is attained indeed lies in
+$S$ is a little bit of a challenge, but an excellent problem to be asked on a 
+subjective exam. In UGA settings, people might escape 
+checking the equality case, but here working out the 
+details is essential! This makes the problem easily at a 
+**moderate level**, even a tiny bit on the _difficult side_.
+
+4. A problem on functional equations, which has appeared 
+after quite some time. If the student is familiar with 
+the idea of _partial differentiation_, then the problem 
+isn't that difficult; you just have to differentiate 
+twice and you are done. There is just a little hit and trial 
+involved, which makes the problem very less involved.
+
+The sad part of the problem is that similar problems have 
+appeared in _ISI 2019 as Problem 4_, which were more 
+difficult in nature. Moreover, I feel if someone has 
+solved Cauchy's Functional Equation over $\mathbb{R}$ 
+under the assumption that $f$ is differentiable, then we
+essentially have all the tools which we need. There are 
+certain ideas, like making a form $\frac{f(x+h)-f(x)}{h}$
+and then trying to force a derivative. This is quite 
+involved, but can still be done if one really desires. 
+Regardless, due to the direct and simpler approach, I would 
+rate the problem as **simple to moderate level**.
+
+5. Anybody experienced with even a little geometry 
+experience, and knows the formula $r = \frac{a+b-c}{2}$ 
+for a right triangle (right angled at $C$), then the problem
+becomes even more straightforward. Even bashing this 
+out algebraically with $r = \Delta/s$ is quite easy. This 
+is clearly an easy geometry problem. I think this is 
+quite an easy problem, with the only real _challenge_ 
+finding the _congruent triangles_, although this is quite
+easy because of the diagram drawn to scale. If not, then 
+finding the similarity of the triangles is quite easy, 
+from where congruency follows, as we covered in our
+solution. This problem is at an **easy level**, no matter 
+how I try to look at it. The only problem could be a 
+student's inexperience with Euclidean geometry, but we 
+can't really do anything about it.
+
+6. The double root lemma used here is extremely common 
+and quite intuitive since we want to comment on the 
+multiplicity of the root. It's a little tricky to prove 
+that $P'(x_0) = 0$, but once that is done the problem is 
+straightforward via induction. Writing down a proper 
+proof by induction is quite lengthy and details need to 
+be written properly, but regardless the idea is 
+quite easy. 
+
+There are other solutions to the problem, one is 
+factoring $P$ via the _Fundamental Theorem of Algebra_ and 
+solving a few inequalities. I think that approach makes 
+the problem more doable compared to what we have done 
+in the blog (only because it doesn't invoke the 
+derivative lemma which we have used). This makes the
+problem quite doable. Anyways, I think the problem 
+is around **moderate level** since writing a proper
+solution would take some time regardless of whether you factor or not.
+
+7. I can't believe ISI could ask a USAMO 1974 problem directly
+on paper. It is not just that ISI is copying problems 
+from the USAMO, but ISI copied the same idea 
+from the UGA paper. The problem reads as
+<div class="center">
+
+**UGA 2026:** Let $p(x)$ be a polynomial with integer 
+coefficients of degree greater than or equal to $5$.
+Suppose $p(0)$ and $p(1)$ are both odd integers. Then
+$|x \in \mathbb{Z} : p(x) = 0|$ equals
+<br/>
+
+**(A)** $1$ &nbsp; **(B)** $0$ &nbsp; **(C)** $2$ &nbsp; **(D)** $3$ or more
+</div>
+
+The answer to the UGA problem is just $0$. Assume 
+there is any root $\alpha \in \mathbb{Z}$ of $p$, then 
+its quite easy to see $\alpha$ is odd. Then by the
+**part a)** of the UGB Problem 7, we get
+$\alpha - 1 \mid P(\alpha) - P(1) = -P(1)$. Now,
+$\alpha - 1$ is even but $P(1)$ is odd! Contradiction!
+
+The first part is **extremely easy**, no doubt 
+about it. Just writing down the identity of $a^n - b^n$ 
+is enough. The second part is indeed harder and one common 
+mistake a student could commit is to use the false statement 
+that
+$$
+a \mid b \mid a \implies a = b \quad \text{(WRONG!)}
+$$
+Instead, $a = \pm b$. This is the only mistake a student can 
+make sitting in the examination hall. So, only due to this 
+pitfall, I would rate the problem around
+**easy to moderate** problem.
+
+8. This was easily the **hardest problem** on the test. 
+You need to know your proofs for the formula of 
+$\sum_{i=1}^n i^2$ and higher powers. Otherwise tackling 
+the problem becomes difficult and requires more 
+unorthodox thinking in the exam. One possible solution is 
+via Riemann sums, which I might consider adding someday
+later in this blog, but that requires even more technical 
+background before the test. This makes the problem clearly
+quite hard.
+
+This problem even tests the student's mathematical 
+maturity by proving the uniqueness of the polynomial. 
+Just seeing $\frac{n(n+1)(2n+1)}{6}$ as a polynomial in $n$
+doesn't really finish the problem; you must show that
+the polynomial agrees everywhere on $\mathbb{R}$, not just on 
+the naturals. The trick to doing this is extremely common, as 
+[Mr. KD Joshi](https://www.math.iitb.ac.in/~kdjoshi/) says, 
+defining a polynomial as
+$R(x) \coloneqq P(x) - \frac{x(x+1)(2x+1)}{6}$ and arguing
+that there are infinitely many roots of $R$ is important 
+and quite a common idea in JEE Advanced.
+
+Writing down a formal solution, which is not all over the 
+place, is quite difficult and managing the calculations 
+is also very important for this problem. This problem is 
+an **excellent problem**, although
+**too lengthy and tedious** for my taste to appear on the
+test.
+
+## Brief Discussion on Cutoff
+
+The cutoff for B.Stat Entrance 2026 has been declared on 
+11 June, 2026. One can see the entire
+<a href="/isi_solutions/UGB_2026/B-Stat_Merit-List_2026.pdf" target="_blank">Merit List</a>. 
+
+UGA Cutoff declared is 63 and
+$\text{UGA} + \text{UGB} \ge 202$. Thus we can say a
+bare minimum to qualify the examination is 15 problems 
+in the objective section and 4 problems in subjective
+section. The quality of UGA was very good this year and 
+I feel if one picked the right problems from the UGA, 
+one could have made a much better UGB paper.
+
+There were a few notable problems in UGA which should 
+have been placed on the UGB section instead of wasting the
+problems in UGA. I personally don't understand why 
+would the problem setting committee set such an easy UGB 
+paper after removing the interview process.
+
+The cutoff of 4 problems for UGB is totally reasonable
+since the UGB was much more doable. UGA was much harder 
+and the student had to solve quite a lot of challening 
+problems without too much break. I very avidly support the 
+subjective section of the paper, but I feel UGA section 
+was much more worthy of getting a higher cutoff because 
+of the paper quality.
+
+## Final Comments
+
+This year the paper quality has degraded once again 
+compared to 2025 UGB. UGA quality has increased which 
+I really appreciate. The problems were approachable 
+with very simple techniques. The only notably good problems
+were Problem 1 part (a), Problem 6 and Problem 8. Problem 2,
+despite not being hard, is a very good problem for the 
+subjective UGB section. I hope next year we could see a
+few interesting problems. 
+
+I really think ISI should stop copying problems like
+Problem 7, which are such a common illustration for anybody 
+learning integer polynomials. Problem 2 and Problem 5 
+should be stated a bit more concretely: Problem 2 should 
+have told what details they want in the graph and Problem 
+5 should at least mention if the answer is a fixed constant 
+or not. It helps the student know much better what the 
+grader is expecting, since there is no communication from 
+a grader to a student at the time of the examination.
+Here's a PDF with the correct and formal solutions to the 
+problems.
+
+<div class="pdf">
+<a href="/isi_solutions/UGB_2026/UGB_2026.tex"><i class="nf nf-dev-tex"></i>&nbsp; LaTeX File</a>
+
+<a href="/isi_solutions/UGB_2026/UGB_2026.pdf"><i class="nf nf-md-file_pdf_box"></i>&nbsp; Download PDF</a>
+
+</div>

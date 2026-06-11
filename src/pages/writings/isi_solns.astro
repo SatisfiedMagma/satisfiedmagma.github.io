@@ -2,36 +2,39 @@
 import MainLayout from "../../layouts/mainlayout.astro";
 import "../../styles/home.css";
 
-import solutions from '../writings/isi_solutions.json';
+import solutions from "../writings/isi_solutions.json";
 const sorted = solutions.sort((a, b) => b.year - a.year);
 ---
 
 <MainLayout pageTitle="ISI/CMI Unoffical Solutions">
-	<div class="content">
-		<h1>ISI/CMI Unofficial Solutions</h1>
-		<p>
-			I've seen people claiming multiple times that
-			they have solved 5-6 problems in the UGB
-			section of ISI. CMI Entrance is genuinely
-			harder, but even there people who often claim
-			to have solved 4 problems but end up only
-			getting partials in them.
-		</p>
-		<p>
-			Here's a link to all the blog posts and the 
-			unofficial solutions which I've prepared by 
-			myself. Note that, these have been made 
-			completely independently by me and has nothing 
-			to do with ISI and its professors.
-		</p>
+    <div class="content">
+        <h1>ISI/CMI Unofficial Solutions</h1>
+        <p>
+            I've seen people claiming multiple times that they have solved 5-6
+            problems in the UGB section of ISI. CMI Entrance is genuinely
+            harder, but even there people who often claim to have solved 4
+            problems but end up only getting partials in them.
+        </p>
+        <p>
+            Here's a link to all the blog posts and the unofficial solutions
+            which I've prepared by myself. Note that, these have been made
+            completely independently by me and has nothing to do with ISI and
+            its professors.
+        </p>
 
-		<ol>
-			{sorted.map((item) => (
-			<li>
-				{item.program} {item.year} [{item.paper} Solutions] 
-			(<a href={item.discussionLink}>Discussion</a>)
-    </li>
-			))}
-		</ol>
-	</div>	
+        <ol>
+            {
+                sorted.map((item) => (
+                    <li>
+                        {item.program} {item.year} 
+                        <a href={item.solutionsLink} target="_blank">
+                            [{item.paper} Solutions]
+                        </a>
+                        <a href={item.texLink}>(TeX Source)</a>
+                        <a href={item.discussionLink} target="_blank">(Discussion)</a>
+                    </li>
+                ))
+            }
+        </ol>
+    </div>
 </MainLayout>

@@ -1,53 +1,54 @@
 ---
-import Layout from '../../layouts/mainlayout.astro';
-import { base } from '../../../astro.config.mjs';
-import { getCollection } from 'astro:content';
+import Layout from "../../layouts/mainlayout.astro";
+import { getCollection } from "astro:content";
 
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection("posts");
 
 // Sort by pubDate (newest first)
-const sortedPosts = allPosts.sort((a, b) => 
-  new Date(b.data.pubDate) - new Date(a.data.pubDate)
+const sortedPosts = allPosts.sort(
+    (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate),
 );
 
-import '../../styles/blog_home.css';
+import "../../styles/blog_home.css";
 ---
 
-<Layout pageTitle="Blog | Pragyan Pranay">	
-  <div class="blog-container">
-    <h1 class="blog-title">All writings</h1>
+<Layout pageTitle="Blogs | Pragyan Pranay">
+    <div class="blog-container">
+        <h1 class="blog-title">All writings</h1>
 
-    <div class="blog-grid">
-      {sortedPosts.map((post) => (
-        <a
-				href={`/personal-website/writings/posts/${post.id}`}
-          class="blog-card"
-        >
-          <h2 class="post-title">{post.data.title}</h2>
-          <div class="post-meta">
-            {post.data.pubDate && (
-              <time datetime={post.data.pubDate}>
-                {new Date(post.data.pubDate).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-            )}
-            {post.data.tags && post.data.tags.length > 0 && (
-              <div class="post-tags">
-                {post.data.tags.map((tag) => (
-                  <span class="tag">#{tag}</span>
-                ))}
-              </div>
-            )}
-          </div>
-          {post.data.description && (
-            <p class="post-description">{post.data.description}</p>
-          )}
-        </a>
-      ))}
+        <div class="blog-grid">
+            {
+                sortedPosts.map((post) => (
+                    <a href={`/writings/posts/${post.id}`} class="blog-card">
+                        <h2 class="post-title">{post.data.title}</h2>
+                        <div class="post-meta">
+                            {post.data.pubDate && (
+                                <time datetime={post.data.pubDate}>
+                                    {new Date(
+                                        post.data.pubDate,
+                                    ).toLocaleDateString("en-US", {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    })}
+                                </time>
+                            )}
+                            {post.data.tags && post.data.tags.length > 0 && (
+                                <div class="post-tags">
+                                    {post.data.tags.map((tag) => (
+                                        <span class="tag">#{tag}</span>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                        {post.data.description && (
+                            <p class="post-description">
+                                {post.data.description}
+                            </p>
+                        )}
+                    </a>
+                ))
+            }
+        </div>
     </div>
-  </div>
 </Layout>
-

@@ -1,70 +1,67 @@
 ---
 import "../styles/home.css";
 import MainLayout from "../layouts/mainlayout.astro";
-import profile_img from '../assets/profile.jpeg';
+import profile_img from "../assets/profile.jpeg";
 ---
 
 <MainLayout pageTitle="Pragyan Pranay | Home">
-	<section class="hero">
-	
-		<div class="Quote">
-			<div class="quote-line">
-				<i>"Being good, means being free!"</i>
-			</div>
-			<div class="quote-author">-Nishinoya, Haikyu</div>
-		</div>
+    <section class="hero">
+        <div class="Quote">
+            <div class="quote-line">
+                <i>"Being good, means being free!"</i>
+            </div>
+            <div class="quote-author">-Nishinoya, Haikyu</div>
+        </div>
 
-		<div class="home-image">
-			<img
-				src={profile_img.src}
-				alt="I know I'm handsome ;)"
-				width="300"
-			/>
-		</div>
+        <div class="home-image">
+            <img
+                src={profile_img.src}
+                alt="I know I'm handsome ;)"
+                width="300"
+            />
+        </div>
 
-		<div class="name">
-			<span>Pragyan Pranay/SatisfiedMagma</span>
-			<span>Mathematics • Programming • Statistics</span>
-		</div>
+        <div class="name">
+            <span class="main-name">
+                <span class="real-name">Pragyan Pranay</span>/<span
+                    class="online-name">SatisfiedMagma</span
+                >
+            </span>
+			<span class="subjects">Mathematics • Programming • Statistics</span>
+        </div>
 
-		<div class="brief-intro">
-			<p>
-				I'm a 2nd year student at Indian
-				Statistical Institute, Kolkata.
-				I'm mostly interested in probability,
-				analysis and combinatorics. I enjoy
-				problem solving, olympiad mathematics,
-				statistics and coding in general.
-			</p>
+        <div class="brief-intro">
+            <p>
+                I'm a 2nd year student at Indian Statistical Institute, Kolkata.
+                I'm mostly interested in probability, analysis and
+                combinatorics. I enjoy problem solving, olympiad mathematics,
+                statistics and coding in general.
+            </p>
 
-			<p>
-				The main goal of this website is to serve
-				as a place where I can host my CV and write
-				about the things I'm learning or find
-				interesting. I also want to share useful
-				resources for Olympiads and for people
-				preparing for ISI/CMI entrance exams.
-				Hopefully, some of the things here turn
-				out to be helpful to others as well.
-			</p>
+            <p>
+                The main goal of this website is to serve as a place where I can
+                host my CV and write about the things I'm learning or find
+                interesting. I also want to share useful resources for Olympiads
+                and for people preparing for ISI/CMI entrance exams. Hopefully,
+                some of the things here turn out to be helpful to others as
+                well.
+            </p>
 
-			<div class="socials">
-				<a
-					href="javascript:void(0)"
-				><i class="fa-solid fa-file"></i> My Resume</a>
-				
+            <div class="socials">
+                <a href="javascript:void(0)"
+                    ><i class="fa-solid fa-file"></i> My Resume</a
+                >
 
+                <a href="https://github.com/SatisfiedMagma" target="_blank"
+                    ><i class="fa-brands fa-github social-btn"></i> SatisfiedMagma</a
+                >
 
-				<a
-					href="https://github.com/SatisfiedMagma"
-					target="_blank"
-				><i class="fa-brands fa-github social-btn"></i> SatisfiedMagma</a>
-
-				<a
-					href="https://in.linkedin.com/in/pragyan-pranay-566a8133b"
-					target="_blank"
-				><i class="fa-brands fa-linkedin"></i> Pragyan Pranay</a>
-			</div>
-		</div>
-	</section>
+                <a
+                    href="https://in.linkedin.com/in/pragyan-pranay-566a8133b"
+                    target="_blank"
+                    ><i class="fa-brands fa-linkedin"></i> Pragyan Pranay</a
+                >
+            </div>
+        </div>
+    </section>
 </MainLayout>

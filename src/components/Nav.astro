@@ -1,107 +1,130 @@
 <nav>
-  <div class="left">
-    <b><a href="https://aops.com/community/user/603664" target="_blank">🔥SatisfiedMagma</a></b>
-  </div>
+    <div class="left">
+        <b
+            ><a href="https://aops.com/community/user/603664" target="_blank"
+                >🔥SatisfiedMagma</a
+            ></b
+        >
+    </div>
 
-  <!-- Hamburger button (visible only on mobile) -->
-  <button class="hamburger" aria-label="Menu" aria-expanded="false">
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-  </button>
+    <!-- Hamburger button (visible only on mobile) -->
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
 
-  <div class="right">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li class="dropdown">
-        <a href="/writings/blogs">Writings ⏷</a>
-        <ul class="dropdown-menu">
-          <li><a href="/writings/blogs/">Blogs</a></li>
-          <li><a href="/writings/isi_solns">ISI/CMI Solutions</a></li>
+    <div class="right">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li class="dropdown">
+                <a href="/writings/blogs"
+                    >Writings<i class="nf nf-oct-triangle_down"></i></a
+                >
+                <ul class="dropdown-menu">
+                    <li><a href="/writings/blogs/">Blogs</a></li>
+                    <li><a href="/writings/isi_solns">ISI/CMI Solutions</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                Olympiads<i class="nf nf-oct-triangle_down"></i>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/olympiads/resources_advices"
+                            >Resources and Advice</a>
+                    </li>
+                    <li>Problems & Solutions</li>
+                </ul>
+            </li>
+            <li><a href="/projects">Projects</a></li>
+            <li class="dropdown">
+                <a href="/about_me"
+                    >About Me<i class="nf nf-oct-triangle_down"></i></a
+                >
+                <ul class="dropdown-menu">
+                    <li><a href="/about_me#FAQs">FAQs</a></li>
+                </ul>
+            </li>
         </ul>
-      </li>
-      <li class="dropdown">
-        Olympiads ⏷ 
-        <ul class="dropdown-menu">
-          <li><a href="/olympiads/resources_advices">Resources and Advice</a></li>  
-          <li>Problems & Solutions</li>  <!-- This is also text -->
-        </ul>
-      </li>
-      <li><a href="/projects">Projects</a></li>
-      <li class="dropdown">
-        <a href="/about_me">About Me ⏷</a>
-        <ul class="dropdown-menu">
-          <li><a href="/about_me#FAQs">FAQs</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+    </div>
 </nav>
 
 <script>
-  const hamburger = document.querySelector('.hamburger');
-  const navRight = document.querySelector('nav .right');
+    const hamburger = document.querySelector(".hamburger");
+    const navRight = document.querySelector("nav .right");
 
-  if (hamburger && navRight) {
-    const toggleMenu = () => {
-      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', !isExpanded);
-      navRight.classList.toggle('show');
-      document.body.classList.toggle('menu-open');
-    };
+    if (hamburger && navRight) {
+        const toggleMenu = () => {
+            const isExpanded =
+                hamburger.getAttribute("aria-expanded") === "true";
+            hamburger.setAttribute("aria-expanded", !isExpanded);
+            navRight.classList.toggle("show");
+            document.body.classList.toggle("menu-open");
+        };
 
-    hamburger.addEventListener('click', toggleMenu);
+        hamburger.addEventListener("click", toggleMenu);
 
-    // Close menu when clicking any link inside .right (optional)
-    navRight.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (navRight.classList.contains('show')) {
-          hamburger.setAttribute('aria-expanded', 'false');
-          navRight.classList.remove('show');
-          document.body.classList.remove('menu-open');
-        }
-      });
-    });
-  }
-
-  // Make dropdowns work on mobile (click to open, not hover)
-  if (window.innerWidth <= 830) {
-    const dropdowns = document.querySelectorAll('nav .dropdown');
-    dropdowns.forEach(dropdown => {
-      // For dropdowns that have a link as the trigger
-      const triggerLink = dropdown.querySelector(':scope > a');
-      if (triggerLink) {
-        triggerLink.addEventListener('click', (e) => {
-          if (window.innerWidth <= 830) {
-            e.preventDefault();
-            dropdown.classList.toggle('open');
-          }
+        // Close menu when clicking any link inside .right (optional)
+        navRight.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                if (navRight.classList.contains("show")) {
+                    hamburger.setAttribute("aria-expanded", "false");
+                    navRight.classList.remove("show");
+                    document.body.classList.remove("menu-open");
+                }
+            });
         });
-      } else {
-        // For dropdowns with plain text trigger (like "Olympiads ⏷")
-        const triggerText = dropdown.firstChild;
-        if (triggerText && triggerText.nodeType === Node.TEXT_NODE) {
-          const wrapper = document.createElement('span');
-          wrapper.textContent = triggerText.textContent;
-          wrapper.style.cursor = 'pointer';
-          wrapper.addEventListener('click', () => dropdown.classList.toggle('open'));
-          triggerText.replaceWith(wrapper);
-        }
-      }
-    });
-  }
+    }
 
-  // Re-run on resize to reset if needed
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (window.innerWidth > 830) {
-        navRight.classList.remove('show');
-        document.body.classList.remove('menu-open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.querySelectorAll('nav .dropdown').forEach(d => d.classList.remove('open'));
-      }
-    }, 200);
-  });
+    // Make dropdowns work on mobile (click to open, not hover)
+    if (window.innerWidth <= 830) {
+        const dropdowns = document.querySelectorAll("nav .dropdown");
+        dropdowns.forEach((dropdown) => {
+            // For dropdowns that have a link as the trigger
+            const triggerLink = dropdown.querySelector(":scope > a");
+            if (triggerLink) {
+                triggerLink.addEventListener("click", (e) => {
+                    if (window.innerWidth <= 830) {
+                        e.preventDefault();
+                        dropdown.classList.toggle("open");
+                    }
+                });
+            } else {
+                // For dropdowns with plain text trigger (like "Olympiads ⏷")
+                const triggerText = dropdown.firstChild;
+                if (triggerText && triggerText.nodeType === Node.TEXT_NODE) {
+                    const wrapper = document.createElement("span");
+                    wrapper.textContent = triggerText.textContent;
+                    wrapper.style.cursor = "pointer";
+                    wrapper.addEventListener("click", () =>
+                        dropdown.classList.toggle("open"),
+                    );
+                    triggerText.replaceWith(wrapper);
+                }
+            }
+        });
+    }
+
+    // Re-run on resize to reset if needed
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth > 830) {
+                navRight.classList.remove("show");
+                document.body.classList.remove("menu-open");
+                hamburger.setAttribute("aria-expanded", "false");
+                document
+                    .querySelectorAll("nav .dropdown")
+                    .forEach((d) => d.classList.remove("open"));
+            }
+        }, 200);
+    });
 </script>
+<style>
+@media (max-width: 901px){
+	.left {
+		font-size: 1.3em;
+	}
+}
+</style>

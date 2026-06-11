@@ -94,6 +94,7 @@ nav ul li a:hover {
 nav .left {
     font-size: 32px;
     padding: 0 1rem;
+	padding-left: 0.1rem;
 }
 
 nav .left a {
@@ -187,7 +188,7 @@ a {
 }
 
 /* Mobile styles (below 830px) */
-@media (max-width: 830px) {
+@media (max-width: 849px) {
     .hamburger {
         display: flex;
     }

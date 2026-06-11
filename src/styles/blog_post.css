@@ -160,3 +160,9 @@ img {
     background-color: #363062;
     border-radius: 5px;
 }
+
+@media (max-width: 470px){
+.blog-content{
+		font-size: 0.85em;
+	}
+}

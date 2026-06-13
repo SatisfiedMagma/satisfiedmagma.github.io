@@ -1,0 +1,39 @@
+---
+export interface Props {
+    title?: string;
+}
+const { title } = Astro.props;
+---
+
+<div class="problem">
+    <div class="problem-header">
+        <span class="problem-label">Problem </span>
+        {title && <span class="problem-title"> ({title}) </span>} :
+    </div>
+    <div class="problem-body"><slot /></div>
+</div>
+
+<style>
+    .problem {
+        margin: 1.5rem 0;
+        padding: 1rem 1.5rem;
+		border-left: 7px solid rgb(222, 49, 99);
+        background-color: rgba(222, 49, 99, 0.2);
+        border-radius: 2px;
+    }
+    .problem-header {
+		margin-bottom: 0.6rem;
+		color: rgb(222, 49, 99);
+        font-weight: 700;
+		font-size: 1.3rem;
+    }
+    .problem-body {
+        display: inline;
+        font-weight: normal;
+        font-style: normal;
+    }
+    .problem-title {
+        font-weight: normal;
+        font-style: italic;
+    }
+</style>

@@ -1,0 +1,326 @@
+---
+title: "The Ky-Fan Metric"
+pubDate: 2026-06-14
+description: "We shall discuss an exam question of my Probability-3 course and see a proof as to why the given distance function is a metric over the space of random variables and a few related properties."
+author: 'Pragyan Pranay'
+image:
+    url: 'https://isiadms3public.s3.ap-south-1.amazonaws.com/images/isilogo.png'
+    alt: 'Ky-Fan'
+tags: ["probability", "analysis", "ky-fan", "metric-spaces"]
+---
+import Lemma from '../../components/theorems/Lemma.astro';
+import Theorem from '../../components/theorems/Theorem.astro';
+import Claim from '../../components/theorems/Claim.astro';
+import Problem from '../../components/theorems/Problem.astro';
+import Definition from '../../components/theorems/Definition.astro';
+
+Probability-3 course was a nightmare for me and I even 
+had to appear for backpaper for this course. This question
+originally came in the end-semester paper for B.Stat 2nd
+Year in session 2025-26. Yeah, this one was exceptionally 
+hard to be done in exam conditions, although with the right
+tools, this isn't very difficult, but producing the details
+with this much perfection is still quite hard. Our 
+professor won't leave us if we wrote even a single 
+half-baked argument 🫠
+
+# Table of Contents
+<div class="toc">
+
+- [🔍 Problem Statement](#problem-statement)
+- [💡 Solution](#solution)
+  - [Part A](#part-a)
+  - [Part B](#part-b)
+  - [Part C](#part-c)
+  - [Part D](#part-d)
+- [Footnotes](#footnotes)
+</div>
+# 🔍 Problem Statement
+
+<Problem title="The Ky-Fan Metric">
+
+Let $\mathcal{T}$ be the set of all real-valued random 
+variables defined on a given probability space
+$(\Omega, \mathcal{F} ,\mathbb{P})$(where 
+two random variables are said to be _equivalent_ if 
+they are equal with probability $1$). Define
+
+$$
+d(X,Y) \coloneqq \inf\{\epsilon \ge 0 : \mathbb{P}(|X-Y| > \epsilon) \le \epsilon \}, \quad X,Y \in \mathcal{T}
+$$
+
+<ol type="a">
+<li> Show that the infimum in the definition of $d$ is
+attained.</li>
+
+<li>Show that $d$ is a metric on $\mathcal{T}$. </li>
+
+<li>
+Let $X \in \mathcal{T}$ and $\{X_n\}_{n \ge 1}$ be a 
+sequence with $X_n \in \mathcal{T}$ for $n \ge 1$. Show 
+that
+$$
+X_n \overset{p}{\to} X \iff d(X_n, X) \to 0
+$$
+as $n \to \infty$.
+</li>
+
+<li>Show that $\mathcal{T}$ is complete with respect to
+metric $d$.</li>
+</ol>
+</Problem>
+
+# 💡Solution
+
+We will solve the problem part by part. Also, for the 
+entire solution, define
+$$
+D_{X,Y}\coloneqq \{\epsilon \ge 0 : \mathbb{P}(|X-Y| > \epsilon) \le \epsilon \}.
+$$
+
+## Part A
+
+$D_{X,Y}$ is non-empty since 
+$1 \in D_{X,Y}$ and $D_{X,Y}$ is bounded below by $0$ by
+definition. Thus, the infimum exists. Let
+$\gamma = \inf D_{X,Y}$, which means there exists a real
+sequence $a_n \searrow \gamma$ where $a_n \in D_{X,Y}$. Thus,
+$$
+\mathbb{P}(|X-Y| > a_n) \le a_n \quad \text{for all } n \ge 1.
+$$
+Write $\mathbb{P}(|X-Y| > a_n) = 1 - \mathbb{P}(|X-Y| \le a_n)$ and let $Z = |X-Y|$. Then we get 
+$$
+1 - a_n \le \mathbb{P}(|X-Y| \le a_n) = F_Z(a_n)
+$$
+Taking $n \to \infty$, then by the right continuity of 
+$F_Z$, we get 
+$$
+1 - \gamma \le F_Z(\gamma) = \mathbb{P}(|X-Y| \le \gamma) = 1 - \mathbb{P}(|X-Y| > \gamma).
+$$
+Rearranging, we get 
+$$
+\mathbb{P}(|X-Y| > \gamma) \le \gamma \implies \gamma \in D_{X,Y}
+$$
+which completes the proof to the first part. $\blacksquare$
+
+## Part B
+
+This one is trickier, lets first recall the definition of 
+a metric space for our context, where the parent set is
+$\mathcal{T}$ and distance function is $d$.
+
+<Definition title="Metric Spaces">
+
+A pair $(\mathcal{T}, d)$ is a metric space (where
+$d\colon \mathcal{T} \times \mathcal{T} \to \mathbb{R}$)
+if $d$ satisifies:[^1]
+
+1. $d(X,Y) = 0 \iff X = Y\,\,\text{a.s}$;
+
+2. $d(X,Y) = d(Y,X)$ for all $X,Y \in \mathcal{T}$; &emsp;\[Symmetry\]
+
+3. $d(X,Z) \le d(X,Y) + d(Y,Z)$ for all $X,Y,Z \in \mathcal{T}$.&emsp;\[Triangle Inequality\]
+</Definition>
+
+[^1]: We have excluded the non-negativity condition which 
+is given in a lot of books. Regardless, if you assume 
+all these conditions, then the non-negativity of $d$ follows.
+You can see this [stackexchange thread](https://math.stackexchange.com/questions/2470349/why-we-write-non-negativity-condition-on-metric-space#comment5104214_2470349). In particular, see the reply to the question by _Hagen von Eitzen_. In our case, proving non-negative is easy, since $D_{X,Y}$ is bounded below by $0$(!)
+
+We will start with the first point. Assume that $d(X,Y) = 0$.
+By [part a),](#part-a) we know that the infimum is attained, 
+thus we have
+$$
+\mathbb{P}\left( |X-Y| > 0 \right) \le 0.
+$$
+
+Since $\mathbb{P}(\bullet) \ge 0$, we get
+$$
+\begin{align*}
+\mathbb{P}\left(|X-Y| > 0 \right) &= 0 \\
+\implies \mathbb{P}\left( |X-Y| \le 0 \right) &= 1.
+\end{align*}
+$$
+
+Since $|r| \ge 0$ for any $r \in \mathbb{R}$, we get
+$\mathbb{P}(0 \le |X-Y| \le 0) = 1 \implies P(X-Y = 0) = 1$. 
+Thus
+$$
+\mathbb{P}(X = Y) = 1,
+$$
+
+which shows $d(X,Y) = 0 \implies X = Y\,\,\text{a.s.}$ Now 
+assume that $X = Y\,\, \text{a.s}$, then
+$$
+0 \in D_{X,Y} \iff \mathbb{P}(|X-Y| > 0) \le 0 \iff \mathbb{P}(|X-Y| > 0) = 0 \iff \mathbb{P}(|X-Y| \le 0) = 1.
+$$
+Finally, this means
+$0 \in D_{X,Y} \iff \mathbb{P}(X - Y = 0) = 1 \iff X = Y\,\,\text{a.s.}$ Recall that $0 \le t$ for all $t \in D_{X,Y}$,
+and now we have shown $0 \in D_{X,Y}$, which means 
+$d(X,Y) = \inf D_{X,Y} = 0$ as desired.
+
+Proving **symmetry** is simple. Just note that
+$$
+D_{X,Y} = \{\epsilon \ge 0 : \mathbb{P}(|X-Y| > \epsilon) \le \epsilon \} = \{\epsilon \ge 0 : \mathbb{P}(|Y-X| > \epsilon) \le \epsilon \} = D_{Y,X}
+$$
+
+where the equality of probabilities follows from the 
+simple fact that $|r| = |-r|$ for all $r \in \mathbb{R}$.
+This gives $\inf D_{X,Y} = \inf D_{Y,X} \implies d(X,Y) = d(Y,X)$ and done.
+
+We shall now prove the **triangle inequality**. This is 
+one is quite tricky. For $X,Y,Z \in \mathcal{T}$, we shall
+prove
+$$
+d(X,Y) \le d(X,Z) + d(Z,Y) \iff c \le a + b
+$$
+
+where $c = d(X,Y)$, $a = d(X,Z)$ and $b = d(Z,Y)$. Define
+$$
+\begin{align*}
+A &\coloneqq \{\omega : |X(\omega) - Y(\omega)| > a+b \} \\ 
+B &\coloneqq \{\omega : |X(\omega) - Z(\omega)| > a \} \\
+C &\coloneqq \{\omega : |Z(\omega) - Y(\omega)| > b \}
+\end{align*}
+$$
+We claim
+the following.
+
+<Claim> $A \subseteq B \cup C$. </Claim>
+
+<div class="proof">
+
+Let $\alpha \in A$. We wish to show that
+$\alpha \in B \cup C$. Assume otherwise,
+$\alpha \not\in B \cup C$ if and only if
+$\alpha \in (B \cup C)' = B' \cap C'$. Since
+$\alpha \in B' \cap C'$, we must have
+$$
+\begin{align*}
+|X(\alpha) - Z(\alpha)| &\le a \\
+|Z(\alpha) - Y(\alpha)| &\le b.
+\end{align*}
+$$
+
+Adding the above equations and using triangle inequality 
+in $\mathbb{R}$ gives
+$$
+|X(\alpha) - Y(\alpha)| \le a + b.
+$$
+
+This is a contradiction since $\alpha \in A$ gives
+$|X(\alpha) - Y(\alpha)| > a + b$. Hence, the 
+claim is proved. $\square$
+</div>
+
+With the above claim and with the union bound
+$\mathbb{P}(A) \le \mathbb{P}(B \cup C) \le \mathbb{P}(B) + \mathbb{P}(C)$
+we get
+$$
+\mathbb{P}(|X-Y| > a + b) = \mathbb{P}(A) \le \mathbb{P}(|X-Z| > a) + \mathbb{P}(|Z-Y| > b) = a + b
+$$
+which ultimately shows 
+$a+b \in D_{X,Y} \implies c = d(X,Y) = \inf D_{X,Y} \le a + b$
+completing the proof to [Part B](#part-b). $\blacksquare$
+
+## Part C
+
+Assume $X_n \overset{p}{\to} X$. Fix $\varepsilon > 0$, we 
+now need to show that there exists $N \in \mathbb{N}$ such 
+that $d(X_n, X) = |d(X_n, X) - 0| < \varepsilon$ for 
+all $n > N$. Since $X_n \overset{p}{\to} X$, for all
+$\eta > 0$ there exists $N_1 \in \mathbb{N}$ such that 
+$$
+\mathbb{P}(|X_n - X| > \varepsilon/2) < \eta \quad \forall n > N_1 \implies \mathbb{P}(|X_n - X| > \varepsilon/2) \le \eta \quad \text{for all }n > N_1
+$$
+Since $\eta$ is free, put $\eta = \varepsilon/2$ to get 
+$$
+\mathbb{P}(|X_n - X| > \varepsilon/2) \le \frac{\varepsilon}{2} \quad \text{for all } n > N_1 \implies \varepsilon/2 \in D_{X_n, X} \quad \text{for all }n > N_1.
+$$
+To finish it off, this means
+$(\inf D_{X_n, X}) \le \varepsilon/2$ for all $n > N_1$,
+which gives 
+$$
+d(X_n, X) \le \frac{\varepsilon}{2} < \varepsilon \quad \text{for all }n > N_1
+$$
+which proves $\displaystyle\lim_{n \to \infty} d(X_n, X) = 0$
+as needed.
+
+The other direction is quite easy as well, assume
+$\displaystyle\lim_{n \to \infty} d(X_n, X) = 0$ and 
+define $a_n \coloneqq d(X_n,X)$. By definition of 
+$a_n$, we know that $\mathbb{P}(|X_n-X| > a_n) \le a_n$ for
+all $n \in \mathbb{N}$. Fix $\varepsilon, \eta > 0$.
+Since $a_n > 0$ and $a_n \to 0$, we can find
+$N_1 \in \mathbb{N}$ such that $a_n < \varepsilon$ for 
+$n > N_1$. Moreover, we can also find
+$N_2 \in \mathbb{N}$ such that $a_n < \eta$ for $n > N_2$.
+For $n > \max(N_1,N_2)$ we have
+$$
+\begin{align*}
+\mathbb{P}(|X_n - X| > \varepsilon) \le \mathbb{P}(|X_n - X| > a_n) \le a_n < \eta \\
+\implies \mathbb{P}(|X_n - X| > \varepsilon) < \eta \quad \text{for all } n > \max(N_1,N_2)
+\end{align*}
+$$
+
+which proves that $X_n \overset{p}{\to} X$. This completes
+the proof to [Part C](#part-c). $\blacksquare$
+## Part D
+
+This one will use a few tools, specifically the 
+Cauchy Criteria for convergence in probability of
+random variables. We shall now define what 
+_cauchy in probability_ means and then prove the 
+theorem which will trivialize the problem.
+
+<Definition title="Cauchy in Probability">
+
+We say a that a sequence of random variables
+$\{X_n\}_{n \ge 1}$ is _Cauchy in Probability_ if 
+for all $\varepsilon, \eta > 0$ there exists
+$N \in \mathbb{N}$ such that
+$$
+\mathbb{P}(|X_m - X_n| > \varepsilon) < \eta
+$$
+for all $m,n > N$. 
+
+</Definition>
+
+<Theorem title="Cauchy Criteria for Convergence in Probability">
+
+For a sequence of real-valued random variables
+$\{X_n\}_{n \ge 1}$
+$$
+X_n \overset{p}{\to} X \iff \{X_n\}_{n \ge 1}\,\,\text{is Cauchy in Probability.}
+$$
+</Theorem>
+
+<div class="proof">
+
+I will add the proof soon. $\square$
+</div>
+
+Returning back to the problem, let $\{Y_n\}_{n \ge 1}$ 
+be a sequence of random variables with $Y_n \in \mathcal{T}$
+for all $n \in \mathbb{N}$ which $d-$cauchy(that is 
+cauchy with the metric $d$). We will prove that 
+$\{Y_n\}_{n \ge 1}$ is _cauchy in probability. Define 
+$a_{m,n} \coloneqq d(Y_m,Y_n)$. Fix $\varepsilon,\eta > 0$, 
+then by definition there exists some
+$N_1, N_2 \in \mathbb{N}$ such that
+$$
+\begin{align*}
+a_{m,n} &= d(Y_m,Y_n) < \varepsilon \quad \text{for all } m,n > N_1;\\
+a_{m,n} &= d(Y_m,Y_n) < \frac{\eta}{2} \quad \text{for all } m,n > N_2.
+\end{align*}
+$$
+
+For all $m,n > \max(N_1, N_2)$, we must have
+$$
+\mathbb{P}(|Y_m-Y_n| > \varepsilon) \le \mathbb{P}(|Y_m-Y_n| > a_{m,n}) \le a_{m,n} \le \frac{\eta}{2} < \eta
+$$
+where the second inequality is by definition of $a_{m,n}$.
+This shows that $\{Y_n\}_{n \ge 1}$ is _cauchy in
+probability_. Invoking the cited theorem, the proof to 
+[Part D](#part-d) is _'complete'_. $\blacksquare$
+### Footnotes

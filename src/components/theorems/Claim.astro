@@ -1,40 +1,40 @@
 ---
 export interface Props {
-  title?: string;
+    title?: string;
 }
 const { title } = Astro.props;
 ---
 
 <div class="claim">
-  <div class="claim-header">
-    <span class="claim-label">Claim </span>
-    {title && <span class="claim-title"> ({title}) </span>} —
-  </div>
-  <div class="claim-body"><slot /></div>
+    <div class="claim-header">
+        <span class="claim-label">Claim </span>
+        {title && <span class="claim-title"> ({title}) </span>} —
+    </div>
+    <div class="claim-body"><slot /></div>
 </div>
 
 <style>
-  .claim {
-    margin: 1.5rem 0;
-    padding: 1rem 1.5rem;
-    border-left: 7px solid rgb(34, 139, 34);
-    background-color: rgba(34, 139, 34, 0.2);
-    border-radius: 2px;
-    /* No counter here */
-  }
-  .claim-header {
-    display: inline;
-    color: rgb(34, 139, 34);
-    font-weight: 700;
-    font-size: 1.3rem;
-  }
-  .claim-body {
-    display: inline;
-    font-weight: normal;
-    font-style: normal;
-  }
-  .claim-title {
-    font-weight: normal;
-    font-style: italic;
-  }
+    .claim {
+        margin: 1.5rem 0;
+        padding: 1rem 1.5rem;
+        border-left: 7px solid rgb(34, 139, 34);
+        background-color: rgba(34, 139, 34, 0.2);
+        border-radius: 2px;
+        /* No counter here */
+    }
+    .claim-header {
+        display: inline;
+        color: rgb(34, 139, 34);
+        font-weight: 700;
+        font-size: 1.3rem;
+    }
+    .claim-body {
+        display: inline;
+        font-weight: normal;
+        font-style: normal;
+    }
+    .claim-title {
+        font-weight: normal;
+        font-style: italic;
+    }
 </style>

@@ -2,10 +2,6 @@
     content: "Proof: \00A0"; font-style: italic;
 }
 
-.proof p:last-child:after{
-    content: "\2610"; float:right;
-}
-
 .proof {
 	margin-bottom: 1rem;
 }

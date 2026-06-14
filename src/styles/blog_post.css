@@ -169,9 +169,19 @@ img {
     justify-content: center;
     border-left: purple solid 0.4rem;
 	padding-top: 0.6rem;
-    padding-left: 1rem;
+    padding-left: 0.8rem;
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 480;
 	background-color: rgb(128,0,128, 0.1);
 	margin-bottom: .6rem;
+}
+
+.step {
+	font-size: 1.3rem;
+	font-weight: bolder;
+	margin-bottom: 0.6rem;
+}
+
+h1, h2, h3 {
+	scroll-margin-top: 5.3rem;
 }

@@ -10,7 +10,20 @@ export default defineConfig({
     markdown: {
         processor: unified({
             remarkPlugins: [remarkMath],
-            rehypePlugins: [rehypeKatex],
+            rehypePlugins: [
+                [
+                    rehypeKatex,
+                    {
+                        macros: {
+                            "\\P": "\\mathbb{P}",
+							"\\RR": "\\mathbb{R}",
+							"\\NN": "\\mathbb{N}",
+							"\\ZZ": "\\mathbb{Z}",
+							"\\QQ": "\\mathbb{Q}",
+                        },
+                    },
+                ],
+            ],
         }),
     },
 

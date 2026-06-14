@@ -122,11 +122,6 @@ if $d$ satisifies:[^1]
 3. $d(X,Z) \le d(X,Y) + d(Y,Z)$ for all $X,Y,Z \in \mathcal{T}$.&emsp;\[Triangle Inequality\]
 </Definition>
 
-[^1]: We have excluded the non-negativity condition which 
-is given in a lot of books. Regardless, if you assume 
-all these conditions, then the non-negativity of $d$ follows.
-You can see this [stackexchange thread](https://math.stackexchange.com/questions/2470349/why-we-write-non-negativity-condition-on-metric-space#comment5104214_2470349). In particular, see the reply to the question by _Hagen von Eitzen_. In our case, proving non-negative is easy, since $D_{X,Y}$ is bounded below by $0$(!)
-
 We will start with the first point. Assume that $d(X,Y) = 0$.
 By [part a),](#part-a) we know that the infimum is attained, 
 thus we have
@@ -297,8 +292,123 @@ $$
 
 <div class="proof">
 
-I will add the proof soon. $\square$
+Assume $X_n \overset{p}{\to} X$. Fix $\varepsilon, \eta > 0$.
+By convergence in probability, we know there exists
+$N \in \mathbb{N}$ such that
+$$
+\mathbb{P}(|X_m - X| > \varepsilon/2) < \frac \eta 2
+$$
+
+for all $m > N$. Define
+$$
+\begin{align*}
+A &\coloneqq \{\omega : |X_m(\omega) - X_n(\omega)| > \varepsilon \} \\
+B &\coloneqq \left\{\omega : |X_m(\omega) - X(\omega)| > \frac\varepsilon 2\right\} \\
+C &\coloneqq \left\{\omega : |X_n(\omega) - X(\omega)| > \frac\varepsilon 2 \right\}
+\end{align*}
+$$
+
+<Claim> $A \subseteq B \cup C.$ </Claim>
+
+We ommit the proof, since its analogous to the 
+claim in [Part B](#part-b). For $m,n > N$, using the claim
+in conjunction with the _union bound_[^2] like in
+[Part B](#part-b) we get
+$$
+\mathbb{P}(|X_m-X_n| > \varepsilon) \le \mathbb{P}\left(|X_m - X| > \frac\varepsilon 2\right) + \mathbb{P}\left(|X_n - X| > \frac \varepsilon 2 \right) < \eta/2 + \eta/2 = \eta
+$$
+which proves that $\{X_n\}_{n \ge 1}$ is _cauchy
+in probability_ as desired.
+<br/>
+
+The other direction is much harder. I'd produce the proof
+as it is done by our Professor with some commentary as the 
+proof is quite involved. Assume that
+$\{X_n\}_{n \ge 1}$ is _cauchy in probability_.
+<br/>
+
+<div class="step">Step 1 – Construct a rapidly Cauchy subsequence.</div>
+Since $\{X_n\}$ is Cauchy in probability, for each $j\in\mathbb{N}$ we can choose an index $n_j$ (with $n_1 < n_2 < \dots$) such that
+
+$$
+\forall\, r,s \ge n_j, \qquad \mathbb{P}\bigl(|X_r - X_s| > 2^{-j}\bigr) < 2^{-j}.
+$$
+
+In particular, for every $j$ we have
+
+$$
+\mathbb{P}\bigl(|X_{n_{j+1}} - X_{n_j}| > 2^{-j}\bigr) < 2^{-j}.
+$$
+
+<div class="step">Step 2 – Apply Borel–Cantelli.</div>
+Because $\sum_{j=1}^{\infty} 2^{-j} < \infty$, the first Borel–Cantelli lemma gives
+
+$$
+\mathbb{P}\bigl( |X_{n_{j+1}} - X_{n_j}| > 2^{-j} \text{i.o. in $j$} \bigr) = 0.
+$$
+
+Define the event
+
+$$
+A = \bigl\{ \omega : |X_{n_{j+1}}(\omega) - X_{n_j}(\omega)| > 2^{-j} \text{ for only finitely many } j \bigr\}.
+$$
+
+Then $\mathbb{P}(A) = 1$.
+<br/>
+
+<div class="step">Step 3 – Almost sure convergence of the subsequence.</div>
+For any $\omega \in A$, there exists $J(\omega)$ such that for all $j \ge J(\omega)$,
+
+$$
+|X_{n_{j+1}}(\omega) - X_{n_j}(\omega)| \le 2^{-j}.
+$$
+
+For $k > \ell \ge J(\omega)$ we have the telescoping estimate
+
+$$
+|X_{n_k}(\omega) - X_{n_\ell}(\omega)|
+\le \sum_{i=\ell}^{k-1} |X_{n_{i+1}}(\omega) - X_{n_i}(\omega)|
+\le \sum_{i=\ell}^{\infty} 2^{-i} = 2^{-\ell+1}.
+$$
+
+Hence $\{X_{n_j}(\omega)\}$ is a Cauchy sequence in $\mathbb{R}$ and therefore converges. Define
+
+$$
+X(\omega) = \begin{cases}
+\displaystyle \lim_{j\to\infty} X_{n_j}(\omega), & \omega \in A,\\[4pt]
+0, & \omega \notin A.
+\end{cases}
+$$
+
+Then $X$ is a random variable (the limit of measurable functions on $A$, and constant on $A^c$). Moreover, $X_{n_j} \xrightarrow{\text{a.s.}} X$, which implies $X_{n_j} \xrightarrow{p} X$.
+<br/>
+
+<div class="step"> Step 4 – From the subsequence to the whole sequence.</div>
+Fix $\varepsilon > 0$ and $\eta > 0$. Because $X_{n_j} \xrightarrow{p} X$, there exists $J$ such that for all $j \ge J$,
+
+$$
+\mathbb{P}\bigl(|X_{n_j} - X| > \varepsilon/2\bigr) < \eta/2.
+$$
+
+Since $\{X_n\}$ is Cauchy in probability, we can also choose $K$ such that for all $m,n \ge K$,
+
+$$
+\mathbb{P}\bigl(|X_m - X_n| > \varepsilon/2\bigr) < \eta/2.
+$$
+
+Now take $N = \max(n_J, K)$. For any $n \ge N$, pick a subsequence index $n_j$ with $n_j \ge N$ (possible because $n_j \to \infty$). Then
+
+$$
+\begin{aligned}
+\mathbb{P}\bigl(|X_n - X| > \varepsilon\bigr)
+&\le \mathbb{P}\bigl(|X_n - X_{n_j}| > \varepsilon/2\bigr) + \mathbb{P}\bigl(|X_{n_j} - X| > \varepsilon/2\bigr) \\
+&< \eta/2 + \eta/2 = \eta.
+\end{aligned}
+$$
+
+Thus $X_n \xrightarrow{p} X$, completing the proof. $\quad\square$
 </div>
+<hr style="margin-bottom: 1rem;"/>
 
 Returning back to the problem, let $\{Y_n\}_{n \ge 1}$ 
 be a sequence of random variables with $Y_n \in \mathcal{T}$
@@ -323,4 +433,14 @@ where the second inequality is by definition of $a_{m,n}$.
 This shows that $\{Y_n\}_{n \ge 1}$ is _cauchy in
 probability_. Invoking the cited theorem, the proof to 
 [Part D](#part-d) is _'complete'_. $\blacksquare$
+
 ### Footnotes
+
+[^1]: We have excluded the non-negativity condition which 
+is given in a lot of books. Regardless, if you assume 
+all these conditions, then the non-negativity of $d$ follows.
+You can see this [stackexchange thread](https://math.stackexchange.com/questions/2470349/why-we-write-non-negativity-condition-on-metric-space#comment5104214_2470349). In particular, see the reply to the question by _Hagen von Eitzen_. In our case, proving non-negative is easy, since $D_{X,Y}$ is bounded below by $0$(!)
+
+[^2]: Union bound simply means that for any two measurable
+events $A,B$ we have
+$\mathbb{P}(A \cup B) \le \mathbb{P}(A) + \mathbb{P}(B).$

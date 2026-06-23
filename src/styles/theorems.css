@@ -4,11 +4,11 @@
 
 .proof {
 	margin-bottom: 1rem;
+	line-height: 1.8;
 }
 
 /* .proposition, */
 /* .corollary, */
-/* .claim { */
 /*     margin: 1.5rem 0; */
 /*     padding: 1rem 1.5rem; */
 /*     border-left: 7px solid; */
@@ -24,11 +24,6 @@
 /*     border-left-color: #d97706; */
 /*     background-color: #fffbeb; */
 /* } */
-/* .claim { */
-/*     border-left-color: rgb(34,139,34); */
-/*     background-color: rgba(34,139,34,0.2); */
-/* } */
-/**/
 /* .proposition::before { */
 /*     counter-increment: proposition-counter; */
 /*     content: "Proposition " counter(proposition-counter) ":"; */
@@ -47,15 +42,6 @@
 /*     margin-bottom: 0.5rem; */
 /*     font-size: 1.1rem; */
 /* } */
-/* .claim::before { */
-/*     content: "Claim \2014"; */
-/*     /* display: block; */
-/*     font-weight: 700; */
-/*     margin-bottom: 0.5rem; */
-/*     font-size: 1.1rem; */
-/*     color: rgb(34,139,34); */
-/* } */
-/**/
 /* .proposition[data-title]::before { */
 /*     content: "Proposition " counter(proposition-counter) ": (" attr(data-title) ")"; */
 /*     font-size: 1.28rem; */
@@ -64,9 +50,3 @@
 /*     content: "Corollary " counter(corollary-counter) ": (" attr(data-title) ")"; */
 /*     font-size: 1.28rem; */
 /* } */
-/* .claim[data-title]::before { */
-/*     content: "Claim (" attr(data-title) ") \2014 "; */
-/*     font-size: 1.1rem; */
-/*     color: rgb(34,139,34); */
-/* } */
-

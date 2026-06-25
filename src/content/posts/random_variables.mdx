@@ -1,6 +1,6 @@
 ---
 title: "Random Variables"
-pubDate: 2026-06-30
+pubDate: 2026-06-25
 description: "Random variables seemed to be innocent, until sigma algebras were introduced. Its time to tame the beast and prove all the results you would need in your probability course!"
 author: 'Pragyan Pranay'
 image:
@@ -14,37 +14,37 @@ import Claim from '../../components/theorems/Claim.astro';
 import Problem from '../../components/theorems/Problem.astro';
 import Definition from '../../components/theorems/Definition.astro';
 
-Learning random-variables as a high-schooler is quite easy, 
+Learning random variables as a high-schooler is quite easy, 
 even in my first course of Probability theory, a 
 random variable $X$ was just a map from $\Omega \to \RR$. 
-Everything was nice and easy till the time $X$ was taking 
+Everything was nice and easy until the time $X$ was taking 
 countably many values, but then there was a need of 
-$\sigma-$algebras. There was no looking back, we had reached 
+$\sigma-$algebras. There was no looking back; we had reached 
 a point where everything required a proof. So today, I'll 
 save everyone from the seemingly unexpected terror of
-random-variables.
+random variables.
 
-Just to be more precise going forward, we are going going
+Just to be more precise going forward, we are going
 to prove measurability of events(subsets of $\Omega$) and
 functions from $\Omega \to \ol\RR$ where $\ol\RR$ is the 
 set of extended reals.
 
 # Why the Jargon?
 
-This deserves a blog-post on its own, but my professor at
+This deserves a blog post on its own, but my professor at
 ISI Kolkata(Dr. Arnab Chakraborty) who taught us
-Probability-I did a wonderful job giving us the idea as to
+Probability I did a wonderful job giving us the idea as to
 why you need to consider the $\sigma-$algebras. I don't think
 I have much to add to that explanation, so I would 
-recommend everyone to read our [class-webpage](https://arnabc74.github.io/prob1_2024/vit.html) where he has discussed 
+recommend everyone to read our [class webpage](https://arnabc74.github.io/prob1_2024/vit.html) where he has discussed 
 the case when $\Omega$ is uncountable and the construction
-by Vitalli.
+by Vitali.
 
 ## Prerequisites
 
 - Definition of a Measure and Measurable Space
 - Sigma Algebras
-- Construction of Vitalli's set(mostly to get a feel for the need of sigma algebras)
+- Construction of Vitali's set(mostly to get a feel for the need of sigma algebras)
 
 # The Updated Definitions
 
@@ -53,7 +53,7 @@ about the probability space only being about the
 sample space $\Omega$ and the probability function
 $\P\colon \mathcal{P}(\Omega) \to [0,1]$. But the moment you
 tackle uncountable probability spaces, then one must resort
-to the use of the sigma field $\mathcal{F}$, to filter out
+to the use of the sigma-field $\mathcal{F}$, to filter out
 the _"good sets"_ and work with them.
 
 <Definition title="Probability Space">
@@ -68,7 +68,7 @@ $\mathcal{F} \to \RR$ satisfying
 
 2. $\P(\Omega) = 1$;
 
-3. If $\{A_k\}_{k = 1}^\infty$ are pairwise disjoint, then
+3. If $\{A_k\}_{k = 1}^\infty$ is a sequence of pairwise disjoint sets where $A_k \in \mathcal F$ for $k \ge 1$, then
 $$
 \sum_{k = 1}^\infty \P(A_k) = \P\left( \bigcup_{k = 1}^\infty A_k\right).
 $$
@@ -76,9 +76,9 @@ $$
 </Definition>
 
 With the above new definition of the probability space, what
-possibly go wrong with random variables? Well, what if you 
-want to compute $\P(X \in B)$ where $B \subseteq \RR$?
-Recall that
+could possibly go wrong with random variables? Well, what
+if you want to compute $\P(X \in B)$ where
+$B \subseteq \RR$? Recall that
 $$
 [X \in B] \coloneqq \{\omega \in \Omega : X(\omega) \in B \}.
 $$
@@ -104,7 +104,7 @@ X^{-1}(B) \in \mathcal{F}\,\, \text{for all }B \in \mathcal{B}(\RR).
 $$
 
 where $X^{-1}(B) = \{\omega \in \Omega : X(\omega) \in B \}$
-and $\mathcal{B}(\RR)$ denotes the borel-sigma algebra 
+and $\mathcal{B}(\RR)$ denotes the Borel $\sigma-$algebra 
 over $\RR$.
 
 </Definition>
@@ -139,15 +139,15 @@ random variables.
 ## Borel Sigma Algebras
 
 Due to the construction by Vitalli, we know that not all
-subsets of $\RR$ can be measured under the probability 
-measure $\P$. Thus we resort to what we call the 
-borel-sigma algebra over $\RR$. Consider the usual metric 
+subsets of $\RR$ can be assigned a probability with the 
+function $\P$. Thus we resort to what we call the 
+Borel $\sigma-$algebra over $\RR$. Consider the usual metric 
 topology[^1] on $\RR$ where let $\tau$ denote the set of all
 open sets[^2] of $\RR$. Then we define 
 $$
 \mathcal{B}(\RR) \coloneqq \sigma(\tau)
 $$
-where $\sigma(\tau)$ means the [smallest sigma-algebra](https://en.wikipedia.org/wiki/%CE%A3-algebra#%CF%83-algebras_generated_by_families_of_sets)
+where $\sigma(\tau)$ means the [smallest $\sigma-$algebra](https://en.wikipedia.org/wiki/%CE%A3-algebra#%CF%83-algebras_generated_by_families_of_sets)
 containing all the elements of $\tau$. Although, dealing 
 with all open intervals is quite cumbersome when you have 
 to prove results. Luckily, $\RR$ is quite forgiving and we 
@@ -207,9 +207,27 @@ $$
 So, you can construct any closed interval from an open
 intervals. The other parts can be done similarly. $\square$
 
-<div style="font-size: 40px;">
-Add More ABOUT BOREL ALGEBRA OF $\ol\RR$
-</div>
+If we want to talk about $\mathcal B (\ol\RR)$, then we 
+need to characterize the open sets of $\ol \RR$, which 
+is more or less a question of topology. If someone is 
+interested in characterizing the open sets of $\ol\RR$, 
+then you can refer the appendix one possible approach.
+For this blog post, we will work a simpler definition of
+$\mathcal B (\ol\RR)$, which is the following.
+
+<Lemma title="Borel Sets over Extended Reals">
+
+Define
+$$
+\mathcal{C} \coloneqq \{[-\infty, x]: x \in \ol\RR\}
+$$
+where $[-\infty, x] \coloneqq (\infty, x] \cup \{-\infty\}$, 
+then 
+$$
+\mathcal{B}(\ol\RR) = \sigma(\mathcal C).
+$$
+
+</Lemma>
 
 
 Even with all this, I will give an alternate definition
@@ -223,7 +241,7 @@ We will start by proving the following theorem.
 
 <Theorem>
 
-Let $\{X_n\}_{n \ge 1}$ be a sequence of ordinary real valued
+Let $\{X_n\}_{n \ge 1}$ be a sequence of ordinary real-valued
 random variables. Show that
 
 1. For $a \in \RR$, $aX_1$ is a random variable;
@@ -231,7 +249,7 @@ random variables. Show that
 2. $|X_1|$ is also a random variable;
 
 3. By giving a suitable example, prove that if $|X_1|$ is 
-a random-variable, then $X_1$ is not necessarily a random
+a random variable, then $X_1$ is not necessarily a random
 variable;
 
 4. $\max(X_1, X_2)$, $\min(X_1, X_2)$, $X_1 + X_2$ are all
@@ -250,10 +268,10 @@ is a random variable.
 </Theorem>
 
 Before starting the proof, we recall the collection 
-$B = \{(-\infty, x]: x \in \RR \}$ generates entire 
+$B = \{(-\infty, x]: x \in \RR \}$ generates the entire 
 $\mathcal{B}(\RR)$ thus $\mathcal{B}(\RR) = \sigma(B)$.
 Thus to show that any map $f\colon \Omega \to \RR$ is a
-random variable, its enough to show that
+random variable, it's enough to show that
 $f^{-1}\left((-\infty, x] \right)\in \mathcal{F}$. If you 
 want a rigorous proof as to why only checking it for 
 generators suffices, then you will find it in the
@@ -327,13 +345,13 @@ $$
 $$
 
 But for any two reals $a,b$, $\min(a,b) \le x \iff a \le x$
-and $b \le x$. This gives
+or $b \le x$. This gives
 $$
-(\min(X_1, X_2))^{-1}(-\infty, x] = \{\omega \in \Omega: X_1(\omega) \le x \} \cap \{ \omega \in \Omega: X_2(\omega \le x)\}
+(\min(X_1, X_2))^{-1}(-\infty, x] = \{\omega \in \Omega: X_1(\omega) \le x \} \cup \{ \omega \in \Omega: X_2(\omega \le x)\}
 $$
 
 Since $X_1, X_2$ are random variables, both the events in 
-the intersection above lie in $\mathcal F$, thus their
+the union above lie in $\mathcal F$, thus their
 intersection would lie there as well. We omit the prove
 for $\max(X_1, X_2)$, but the idea to prove that is very
 very similar.
@@ -417,12 +435,12 @@ $$
 We shall prove that $Z_n$ is an extended random variable, 
 then by the result proven above, we must have that
 $Y = \inf Z_n$ is also a random variable. One needs to be
-careful, in the previous proof we assumed that $X_i$'s are
+careful; in the previous proof we assumed that $X_i$'s are
 real valued random variables, then $\inf X_n$ is an
 extended random variable. In our case, we have a sequence
 of extended random variables $Z_n$ and then we are 
 concluding $\inf Z_n$ is also a random variable. The proof
-to this completely the same as above and can be worked out
+of this completely the same as above and can be worked out
 quite easily, so we'll skip it here.
 
 <Claim> $Z_n$ is an extended random variable for all $n \in \NN$.</Claim>
@@ -439,7 +457,7 @@ A standard analysis fact says that $\sup_{n \ge k}
 X_k(\omega) \le x \iff X_j(\omega) \le x$ for all $j \ge n$.
 This gives, 
 $$
-Z_n^{-1}[-\infty, x] = \bigcap_{j = k}^\infty \{\omega : X_j(\omega) \le x \}.
+Z_n^{-1}[-\infty, x] = \bigcap_{j = n}^\infty \{\omega : X_j(\omega) \le x \}.
 $$
 
 Since $\{ \omega: X_j(\omega) \le x \} \in \mathcal F$ for
@@ -451,7 +469,7 @@ This completes the proof to part 6.
 
 <hr style="margin: 1rem 0"/>
 
-_Proof to part 8:_ We'll use our favourite class 
+_Proof to part 7:_ We'll use our favourite class 
 of generators, namely $\{ (-\infty, x]: x \in \RR \}$.
 Define $Y\colon \Omega \to \RR$ such that 
 $Y(\omega) = X_1\bm{1}_A(\omega) + X_2\bm{1}_{A^c}(\omega)$
@@ -469,7 +487,7 @@ $$
 
 The final trick here is to notice that 
 $$
-Y^{-1}(\infty , x] = \left(\{\omega: X_1(\omega) \le x\}\cap A \right)\cup \left(\{ \omega: X_2(\omega) \le x\} \cap A^c\right)
+Y^{-1}(-\infty , x] = \left(\{\omega: X_1(\omega) \le x\}\cap A \right)\cup \left(\{ \omega: X_2(\omega) \le x\} \cap A^c\right)
 $$
 
 Clearly, $Y^{-1}$ is a union of two measurable sets. This
@@ -562,8 +580,71 @@ since $X_n$ is a random variable for all $n \in \NN$.
 After taking countable union and intersection, we still 
 get a set a in $\mathcal{F}$ completing the proof. $\square$
 
+<hr style="margin: 1rem 0;"/>
 
+_Sketch to proof of part 3:_ Consider $X^{-1}$ which is
+$$
+X^{-1}(x,\infty] = \{\omega: X(\omega) > x \} = \{\omega: X(\omega)> x, \omega \in A \} \cup \{\omega: X(\omega) > x, \omega \in A^c \}
+$$
 
+The above can be re-written as
+$$
+X^{-1} = \{ \omega \in A: \lim_{n \to \infty} X_n(\omega) > x \} \cup (\{\omega: 0 > x \} \cap A^c)
+$$
+
+It is easy to see that $\{\omega: 0 \le x \} \cap A^c \in 
+\mathcal{F}$. It suffices to show that
+$\{\omega \in A: \lim_{n \to \infty} X_n(\omega) > x \} \in \mathcal F$. 
+Now, $\lim_{n \to \infty} X_n(\omega) > x \iff
+X_n(\omega) > x$ for all $n > N$ where $N \in \NN$. This
+means, 
+$$
+\{\omega \in A: \lim_{n \to \infty} X_n(\omega) > x \} = \bigcup_{N = 1}^\infty\{\omega: X_n(\omega) > x \,\,\text{for $n > N$}\}
+$$
+This concludes the proof since $\{\omega: X_n(\omega) > x \,\,\text{for }n> N\}$ for all $n \in \NN$ since $X_n$ is a
+random variable. $\square$
+
+<hr style="margin: 1rem 0;"/>
+
+We will skip the proof to part 4, since the blog became 
+too repetitive with the same idea. The reader is encouraged
+to workout the details if they are feeling uncomfortable.
+To end the blog, I'll present the final a very significant
+result, which answers questions like, if $X$ is a random 
+variable then should $\sin(X)$ should be a random variable? 
+What about simpler thing like $X^2 + 4X$?
+
+<Theorem title="Continuity preserves Measurability"> 
+
+Let $X$ be a random variable on the measurable space
+$(\Omega, \mathcal F)$. Let $f\colon \RR \to \RR$ be a 
+continuous function in its domain, then $f(X)$ is a 
+random variable as well.
+
+</Theorem>
+
+<div class="proof">
+
+Denote $A$ as set of all finite open intervals of $\RR$ 
+which generates $\mathcal B(\RR)$ and let $(a,b) \in A$.
+Consider 
+$$
+f(X)^{-1}(a,b) = \{\omega \in \Omega: f(X(\omega)) \in (a,b)\} = \{\omega \in \Omega: X(\omega) \in f^{-1}(a,b)\}
+$$
+
+Recall a simple fact from analysis/topology, a pull-back 
+map of a continous function takes an open set back to an 
+open set, which means $f^{-1}(a,b)$ is an open set. Since
+open sets generate $\mathcal{B}(\RR)$, the set above 
+set lies in $\mathcal{F}$ concluding the proof. $\quad\blacksquare$
+
+</div>
+
+Indeed, a natural generalization follows. Instead of saying 
+$f$ continuous, if you imposed the condition that 
+$f$ was a measurable function from $\RR \to \RR$, i.e., 
+for any Borel set $B$, $f^{-1}(B) \in \mathcal{B}(\RR)$, 
+even then the conclusion holds true.
 
 # Appendix
 
@@ -572,18 +653,18 @@ get a set a in $\mathcal{F}$ completing the proof. $\square$
 The following lemma is quite extensively used(honestly 
 quite easy to prove as well) to prove if two collections
 $\mathcal{C}_1$ and $\mathcal C_2$ generate the same 
-$\sigma-$algebra or not. This lemma is exclusively used 
+$\sigma-$algebra or not. This result is exclusively used 
 in proving [this lemma](#borel-generator) where we have 
 discussed about several generators of $\mathcal B(\RR)$.
 
 <a id="generator-algebra"></a>
 <Lemma>
 
-For a measureable space $(\Omega, \mathcal F)$, let
-$\mathcal C_1$ and $\mathcal C_2$ be two collection of 
+For a measurable space $(\Omega, \mathcal F)$, let
+$\mathcal C_1$ and $\mathcal C_2$ be two collections of 
 subsets of $\Omega$. Then
 $$
-\sigma(\mathcal C_1) = \sigma(\mathcal C_2) \iff \mathcal C_2 \subseteq \sigma(\mathcal C_2) \quad \text{and} \quad \mathcal{C_1} \subseteq \sigma(\mathcal C_2).
+\sigma(\mathcal C_1) = \sigma(\mathcal C_2) \iff \mathcal C_2 \subseteq \sigma(\mathcal C_1) \quad \text{and} \quad \mathcal{C_1} \subseteq \sigma(\mathcal C_2).
 $$
 
 </Lemma>
@@ -656,8 +737,10 @@ Now, recall that $\mathcal C_1$ lies in $\mathcal{T}$
 which is a sigma algebra and
 $\mathcal{T} \subseteq \sigma(\mathcal C_1)$. Since
 $\sigma(\mathcal C_1)$ is minimal sigma field containing
-$\mathcal C_1$, we must have $\mathcal T = \mathcal{C_1}$,
-completing the proof. $\quad \blacksquare$
+$\mathcal C_1$, we must have $\mathcal T =
+\sigma(\mathcal{C_1})$, completing the proof.
+$\quad \blacksquare$
+
 </div>
 
 </div>
@@ -695,23 +778,7 @@ open set in $\ol\RR$. This would generate all your open
 sets in $\ol\RR$. An interested reader can go and look for 
 the details online([here's a recommendation](https://www.youtube.com/playlist?list=PLpRE0Zu_k-Bz6I691nDbE0qLsCFKwx5ku) although, this one goes into measure theory), but we shall
 skip it since it requires a good knowledge of metric spaces
-and topologies induced by it. A good result which we would
-use is the following.
-
-<Lemma title="Borel Sets over Extended Reals">
-
-Define
-$$
-\mathcal{C} \coloneqq \{[-\infty, x]: x \in \ol\RR\}
-$$
-where $[-\infty, x] \coloneqq (\infty, x] \cup \{-\infty\}$, 
-then 
-$$
-\mathcal{B}(\ol\RR) = \sigma(\mathcal C).
-$$
-
-</Lemma>
-
+and topologies induced by it.
 
 ### Footnotes
 [^1]: Yes, the definition of the borel-sigma algebra is

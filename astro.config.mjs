@@ -20,6 +20,7 @@ export default defineConfig({
 							"\\NN": "\\mathbb{N}",
 							"\\ZZ": "\\mathbb{Z}",
 							"\\QQ": "\\mathbb{Q}",
+							"\\ol": "\\overline",
                         },
                     },
                 ],

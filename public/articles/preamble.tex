@@ -1,0 +1,32 @@
+\usepackage[left=1.1in,right=1.1in]{geometry}
+\usepackage[secthm,mdthm]{evan}
+\usepackage[most]{tcolorbox}
+\usepackage{cancel}
+\usepackage[labelfont=bf,sf, font=sf]{caption}
+\usepackage{bm}
+
+\addtokomafont{paragraph}{\color{DeepSkyBlue!35!black}\P\,}
+% \setparsizes{20pt}{4pt}{0pt plus 1fil}
+
+\newcommand{\bsquare}{\hfill$\blacksquare$\par\medskip}
+\newcommand{\PP}{\mathbb{P}}
+\newenvironment{sol}{%
+     \par\medskip\noindent\textit{Solution.}}{%
+     \hfill$\blacksquare$\par\medskip}
+
+\declaretheorem[style=thmbluebox,name=Axiom,numbered=no]{axiom}
+
+\newtcbtheorem[auto counter]{prob}{\textbf{Problem}}%
+    {enhanced,frame empty,interior empty, sharp corners, colframe=magenta, top=1.5mm,separator sign none, coltitle=white,fonttitle=
+    \sffamily \bfseries, description font=\mdseries\sffamily, colbacktitle=magenta!100!white,
+        borderline={0.5mm}{0mm}{magenta!15!},
+        borderline={0.5mm}{0mm}{magenta!100!white},
+        attach boxed title to top left={yshift=0mm},
+        boxed title style=sharp corners,
+    }{thm} %(description font helps in resolving issues with theorem name and custom theorem name as fonttitle gives same font family to both Theorem name and Number)
+
+\makeatletter
+\renewcommand*{\eqref}[1]{%
+  \hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}%
+}
+\makeatother

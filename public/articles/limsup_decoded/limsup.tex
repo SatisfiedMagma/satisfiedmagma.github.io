@@ -1,0 +1,413 @@
+\documentclass[numbers=endperiod, 11pt]{scrartcl}
+\input{../preamble.tex}
+\ihead{\textbf{Pragyan Pranay}}
+\ohead{\footnotesize\url{satisfiedmagma.github.io}}
+
+\begin{document}
+\title{The Limit Superior and Limit Inferior}
+\subtitle{Your Reliable Ally}
+\author{Pragyan Pranay}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+	This article aims to demistify the concept of
+	$\limsup$ and $\liminf$ which students have to learn
+	in an introductory analysis course right after
+	learning about the rigorous definition of convergence
+	in $\RR$. We will build this concept from ground up
+	so the idea feels natural to the students.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Reviewing Convergence in Reals} %put \RR here
+We'll start by recalling the definition of convergence
+of a real sequence $a_n$ in $\RR$.
+
+\begin{definition}[Convergence in $\RR$]
+	We say that a sequence $a_n$ converges in $\RR$ if
+	there exists some $a \in \RR$ such that for
+	any $\varepsilon > 0$ there exists $N \in \NN$ such
+	that
+	\[|a_n - a| < \varepsilon \quad \text{for any $n > N.$} \]
+\end{definition}
+
+The idea for this definition is quite simple, for large
+enough $N$, the distance between the terms of the sequence
+$a_n$ and $a$ can get arbitrarily small. Essentially,
+we are \emph{analyzing} the \textbf{long-term `settling'
+	behaviour of the sequence.}
+
+This definition has some problems. First of all, if such
+an $a$ exists, then is it unique? Does it even exist? The
+answer to the first problem is given by the following
+theorem.
+
+\begin{theorem}[Uniqueness]
+	If a real sequence $a_n$ converges to both $a$ and $a'$,
+	then $a = a'$. In other words, the limit of the sequence
+	is unique.
+\end{theorem}
+
+Due to the above theorem, we can now introduce a notation.
+If $a_n$ converges to $a$, then we shall write it as
+$\displaystyle \lim_{n \to \infty} a_n = a$ or $a_n \to a$
+as $n \to \infty$.
+
+If you consider a sequence $a_n = (-1)^n$, then it can
+be proven that $a_n$ doesn't converge to any real number.
+So, given any sequence, it is not necessary that the
+sequence must converge.
+
+The majority of real analysis, deals with convergent
+sequences. The sequences which don't converge to anything,
+treating them becomes harder. Here's a theorem which
+has extensive use throughout analysis.
+
+\begin{theorem}[Limit Inequality]\label{thm:lim_ineq}
+	Let $a_n$ and $b_n$ be two real sequences such that
+	$a_n \ge b_n$ and both the sequences are
+	convergent in $\RR$. Then
+	\[ \lim_{n \to \infty} a_n \ge \lim_{n \to \infty} b_n \]
+\end{theorem}
+
+The theorem has a \emph{strong hypothesis;} it assumes
+the convergence of both the sequences. If the sequences
+are not convergent, then what shall we do? We have
+now finally hit the grave the problem, if the sequence ceases
+to converge, then is there any useful notion to find where
+the sequence is \emph{settling} in the long run?
+
+\subsection{A Grave Problem}
+\begin{example}[A Really (Un?)Settling Sequence]\label{example:multiple_accumulation_points}
+	Consider the sequence $\{a_n\}_{n \ge 1}$ given by
+	\[a_n = (-1)^{n}\left( 2 + \frac 1 n \right).  \]
+	Is $a_n$ convergent? Does it \emph{seem to converge}
+	anywhere?
+\end{example}
+
+For the beginners, it is a good exercise to sit down and
+write a formal proof that the sequence doesn't converge.
+Although, if you take large $n$, then one realizes
+that $a_n$ seems to sometimes approach $2$ but sometimes
+approaches $-2$. Here's a small table, for values of $n$
+around $1000$.
+\[
+	\begin{array}{c|c}
+		n    & a_n             \\ \hline
+		997  & -2.001003\ldots \\
+		998  & 2.001002\ldots  \\
+		999  & -2.001001\ldots \\
+		1000 & 2.001000\ldots  \\
+		1001 & -2.000999\ldots \\
+		1002 & 2.000998\ldots  \\
+		1003 & -2.000997\ldots
+	\end{array}
+\]
+
+Formally, we can write it as
+\[\lim_{n \to \infty} a_{2n} = 2 \quad \text{\&} \quad \lim_{n \to \infty} a_{2n-1} = -2.\]
+
+This means that even though the sequence doesn't
+converge(due to \Cref{thm:subseq_conv}), there is still some
+settling behaviour in the sequence. To analyze the
+long term `settling' behaviour, we definitely want to
+capture this behaviour.
+
+\subsection{Important Terminologies}
+With the motivation set in space, we'll now introduce a new
+definition.
+
+\begin{definition}[Accumulation Points]
+	For a real valued sequence $\{a_n\}_{n \ge 1}$, we
+	say that $u$ is an \emph{accumulation point} if
+	for any $\varepsilon > 0$ there exists infinitely
+	many $m \in \NN$
+	such that
+	\[a_m \in (u-\varepsilon, u + \varepsilon). \]
+\end{definition}
+
+In essence, this definition says that there are infinitely
+members of sequence $a_n$ which are lying arbitrarily
+arbitrarily close to $u$. A similar definition which
+textbooks use is the following.
+
+\begin{definition}[Subsequential Limits]
+	We say $u$ is a subsequential limit of sequence
+	$\{a_n\}_{n \ge 1}$ if there exists some subsequence
+	$\{a_{n_k}\}_{k \ge 1}$ such that $a_{n_k} \to u$ as
+	$n \to \infty$.
+\end{definition}
+
+Its not a surprise that any accumulation point must be a
+subsequential limit of the sequence. Think like this,
+any subsequential limit MUST be an accumulation
+point by very definition of convergence. If you have
+accumulation point in hand, then first pick an element
+within $2^{-1}$ neighborhood of $u$. Then pick a new
+element from $2^{-2}$ neighborhood. Rinse and repeat!
+This way one can construct a subsequence converging to
+$u$. Details are obviously missing. Thus, we shall
+formally state it and prove it as a theorem.
+
+\begin{theorem}\label{thm:accum-pt_is_subseq_lim}
+	$v \in \RR$ is an \emph{accumulation point} if and
+	only if $v$ is a \emph{subsequential limit}.
+\end{theorem}
+\begin{proof}
+	{\Large To be Added\dots}
+\end{proof}
+
+With help of above theorem, we can now use the words
+\emph{accumulation points} and \emph{subsequential limits}
+interchangably. The following theorem becomes quite
+trivial.
+
+\begin{theorem}
+	A sequence $\{a_n\}$ is converges to $a\in \RR$ if and
+	only if $\{a_n\}_{n \ge 1}$ has only a unique
+	\emph{accumulation point}, $a$ to be particular.
+\end{theorem}
+
+\begin{exercise}[Optional]
+	Write down formal proof to the above theorem if you
+	are a beginner or look it up if you are feeling stuck.
+\end{exercise}
+
+The idea of $\limsup$ is exactly the same as finding
+the ``largest'' accumulation point. Its a good time to 
+revisit \Cref{example:multiple_accumulation_points}.
+
+We could clearly clearly see that $a_n$ was kind of
+settling around the points $2$ and $-2$. Indeed, due to 
+\Cref{thm:accum-pt_is_subseq_lim} both $2$ and $-2$ are 
+\emph{accumulation points}. It requires some work to show 
+that there are no other accumulation points other than 
+than $2,-2$.
+\begin{exercise}
+	Show that the sequence 
+	\[a_n = (-1)^{n}\left( 2 + \frac 1 n \right)\]
+	has only two \emph{accumulation points}, which are
+	$2$ and $-2$.
+\end{exercise}
+
+The largest \emph{accumulation point} of $a_n$ is $2$, thus
+we would write $\limsup a_n = 2$. There are some technical
+details which one needs to address, like its existence
+and whether a true maximum\footnote{if you consider a 
+set of all accumulation points, it could be the 
+case a \emph{supremum} exists, but a maximum doesn't.}
+exists or not. The next section is dedicated to properly 
+establishing this notion and filling any holes of this 
+concept which we have in mind.
+
+\section{Introducing Limit Superior}
+
+We'll walk through a few equivalent definitions and give 
+the proper proofs wherever necessary. We will start with 
+the subsequential limits definition and then move onto 
+the more \emph{harder} definition which allows for easier
+computation of the limit superior.
+
+\begin{center}
+	{\color{red}\textbf{Disclaimer:}} All the sequences
+	are bounded unless stated otherwise.
+\end{center}
+
+\subsection{Largest Accumulation Point/Subsequential Limit}
+We have now seen that the limit of the sequence is indeed
+an \emph{accumulation point}. The idea of limit supremum
+is finding the largest \emph{accumulation point} of
+your $a_n$. There is no guarantee whether a true
+`maximum' exists or not. Therefore, for sequence
+$a_{n}$ define
+
+\[V \coloneqq \{x \in \RR : x\text{ is an \emph{accumulation point} of } a_n\}. \]
+
+We want to find $\sup(V)$, for which we shall use
+\nameref{axiom:completeness}. We need to ensure that
+$V$ is bounded above and non-empty. The following
+lemma will do it.
+
+\begin{lemma}
+	$V$ is bounded above and non-empty.
+\end{lemma}
+\begin{proof}
+	Let $u \in \RR$ be an \emph{accumulation point} or a
+	\emph{subsequential limit}. Thus, there exists some
+	subsequence $\{a_{n_k}\}_{k \ge 1}$ such that 
+	$a_{n_k} \to u$ as $k \to \infty$. Since $a_n$ is
+	bounded, there exists some $M > 0$ such that 
+	$-M \le a_n \le M$ for all $n \ge 1$. Therefore, 
+	\[-M \le a_{n_k} \le M \quad \text{for all $k \ge 1$.}\]
+	Taking $m \to \infty$ on both the sides with aid of
+	\Cref{thm:lim_ineq}, we shall $|u| < M$ for any
+	accumulation point $u$ of $a_n$, proving that 
+	$V$ \textbf{is bounded}.
+
+	Since $a_n$ is bounded, we know that via 
+	\nameref{thm:bolzano_weirstrass}, there exists a
+	subsequence $\{a_{m_k}\}_{k \ge 1}$ such that
+	$a_{m_k} \to t$ 
+	for some $t \in \RR$. Since $t$ is a \emph{subsequential
+	limit}, it must be an \emph{accumulation point}, which 
+	shows $t \in V \implies V \ne \emptyset$.
+\end{proof}
+
+With this preparatory lemma, we are now free to define
+the following.
+\begin{definition}
+	For a bounded real sequence $\{a_n\}_{n \ge 1}$,
+	define
+	\[\limsup_{n \to \infty} a_n = \sup(V)\]
+	where $V$ is set of all accumulation points of
+	$\{a_n\}_{n \ge 1}$.
+\end{definition}
+\begin{remark*}[Notation]
+	There are several notations for this quantity. People
+	write it as $\varlimsup a_n$ or just $\limsup a_n$.
+	We shall justify it later why we use $n \to \infty$
+	below $\limsup$ in a latter section.
+\end{remark*}
+
+We have finally setup the definition of the limit 
+superior. A question still remains\dots Is the supremum 
+attainable? The answer turns out to be a \textbf{yes.}
+The following lemma is from Rudin but is very crucial 
+to get a better understanding about the `distribution' of 
+\emph{accumulation points} on the real line.
+
+If a student wants to freshen up on the concept of what a
+`closed' set is, then they can refer \textbf{here} in the 
+appendix.
+
+\begin{lemma}
+	The \emph{subsequential limits} of a real sequence
+	$\{p_n\}_{n \ge 1}$ forms a closed subset of $\RR$.
+\end{lemma}
+
+\begin{proof}
+	To be added\dots
+\end{proof}
+
+\begin{exercise}[General Metric Spaces]
+	Write a general result, replacing $\RR$ by a general 
+	metric space $(X,d)$ where $X$ is the set of elements
+	and $d$ is the distance function. Write a formal 
+	proof as well.
+\end{exercise}
+
+
+This definition is a little difficult to handle. Finding
+accumulation points in itself takes quite some computation
+and then we are here talking about the `largest one'. In
+particular, we want some properties of this number which
+is actually useful in practice.
+
+Regardless, this is simplest definition to introduce to 
+a student initially. Instead of directly stating another
+equivalent definition, we'll take sometime analyzing what
+kind of behaviour should our `largest' accumulation
+point exhibit.
+
+\subsection{The Epsilon Criteria}
+
+In this subsection, we will carry-forward and build up
+more on the previous definition of limit superior.
+We wish to analyze what kind of behaviour does the 
+largest \emph{accumulation point} exhibits.
+
+\begin{definition}
+	For a bounded sequence $\{a_n\}_{n \ge 1}$, let
+	$s^\ast \in \RR$ such that
+	\begin{itemize}
+		\item For any $\varepsilon > 0$, there are
+		      finitely many $n$ satisfying
+		      $s^\ast + \varepsilon > a_n$;
+		\item For any $\varepsilon > 0$, there are
+		      infinitely many $n$ satisfying
+		      $s^\ast - \varepsilon < a_n$.
+	\end{itemize}
+
+	Then there is only one $s^\ast \in \RR$ which
+	satisfies both of these properties. Therefore, we 
+	now define
+	\[ \displaystyle s^\ast \coloneqq \varlimsup_{n \to \infty} a_n.\]
+\end{definition}
+
+
+\subsection{Tailed Supremums}
+
+\subsection{The Limit Inferior}
+
+\subsection{Useful Results}
+
+\subsection{Heuristics: When to use it?}
+
+\newpage
+\section{Few Applications}
+
+\subsection{Artifical Problems}
+
+\subsection{The Ratio and Root Tests}
+
+\subsection{Radius of Convergence of Power Series}
+
+\subsection{An Example from Probability Theory}
+This one too niche, regardless a good example. If one is 
+not aware of the notion of weak convergence/convergence 
+in distribution in probability theory, then feel free to
+skip this one for now.
+
+\begin{prob*}{(No Atoms in Weak Convergence)}{}
+	Let $(\Omega, \mathcal F, \mathbb P)$ be a
+	probability space and $\{X_n\}_{n \ge 1}$ be a sequence
+	of real valued-random variables and $X$ be another
+	random variable such that $X_n \overset{d}{\to} X$.
+	If $a$ is a continuity point of $F_X$, then prove that
+	\[\lim_{m \to \infty} \mathbb{P}(X_m = a) = \mathbb{P}(X = a) = 0.  \]
+\end{prob*}
+
+\section{Limit Superior and Limit Inferior of Sets}
+
+\subsection{}
+
+\section{Brief Note on Extended Reals}
+
+\newpage
+\section{Practice Problems}
+
+\begin{problem}[First Borel-Cantelli Lemma]
+	Given a probability space $(\Omega, \mathcal F, \PP)$
+	and a sequence events $\{A_n\}_{n \ge 1}$ where 
+	$A_m \in \mathcal F$ for all $m \in \NN$, then prove
+	that 
+	\[\sum_{i = 1}^\infty \PP(A_i) < \infty \implies \PP\left(\limsup_{n \to \infty} A_n\right) = 0.\]
+\end{problem}
+
+\newpage
+\appendix
+\section{Appendix}
+
+\subsection{Standard Facts from Analysis-I}
+
+\begin{axiom}[The Completeness Axiom]\label{axiom:completeness}
+	For any non-empty $A \subset \RR$ bounded above, the
+	supremum of $A$ or $\sup(A)$ exists in $\RR$.
+\end{axiom}
+
+\begin{theorem}[Subsequences of Convergence Sequences]\label{thm:subseq_conv}
+	If $a_n \to a$ as $n \to \infty$, then any
+	subsequence of $a_n$ must converge to $a$ as well.
+\end{theorem}
+
+\begin{theorem}[Bolzano Weirstrass]\label{thm:bolzano_weirstrass}
+	For any bounded sequence $\{b_n\}_{n \ge 1}$, there 
+	exists a convergent subsequence
+	$\{b_{n_k}\}_{k \ge 1}$.
+\end{theorem}
+
+
+\end{document}

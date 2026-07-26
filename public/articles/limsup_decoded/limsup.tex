@@ -1,5 +1,7 @@
-\documentclass[numbers=endperiod, 11pt]{scrartcl}
+\documentclass[parskip=half, numbers=endperiod, 11pt]{scrartcl}
 \input{../preamble.tex}
+\setlength{\parindent}{1em}
+
 \ihead{\textbf{Pragyan Pranay}}
 \ohead{\footnotesize\url{satisfiedmagma.github.io}}
 
@@ -46,9 +48,9 @@ answer to the first problem is given by the following
 theorem.
 
 \begin{theorem}[Uniqueness]
-	If a real sequence $a_n$ converges to both $a$ and $a'$,
-	then $a = a'$. In other words, the limit of the sequence
-	is unique.
+	If a real sequence $a_n$ converges to both $a$ and
+	$a'$, then $a = a'$. In other words, the limit of the
+	sequence is unique.
 \end{theorem}
 
 Due to the above theorem, we can now introduce a notation.
@@ -177,17 +179,17 @@ trivial.
 \end{exercise}
 
 The idea of $\limsup$ is exactly the same as finding
-the ``largest'' accumulation point. Its a good time to 
+the ``largest'' accumulation point. Its a good time to
 revisit \Cref{example:multiple_accumulation_points}.
 
 We could clearly clearly see that $a_n$ was kind of
-settling around the points $2$ and $-2$. Indeed, due to 
-\Cref{thm:accum-pt_is_subseq_lim} both $2$ and $-2$ are 
-\emph{accumulation points}. It requires some work to show 
-that there are no other accumulation points other than 
+settling around the points $2$ and $-2$. Indeed, due to
+\Cref{thm:accum-pt_is_subseq_lim} both $2$ and $-2$ are
+\emph{accumulation points}. It requires some work to show
+that there are no other accumulation points other than
 than $2,-2$.
 \begin{exercise}
-	Show that the sequence 
+	Show that the sequence
 	\[a_n = (-1)^{n}\left( 2 + \frac 1 n \right)\]
 	has only two \emph{accumulation points}, which are
 	$2$ and $-2$.
@@ -196,24 +198,24 @@ than $2,-2$.
 The largest \emph{accumulation point} of $a_n$ is $2$, thus
 we would write $\limsup a_n = 2$. There are some technical
 details which one needs to address, like its existence
-and whether a true maximum\footnote{if you consider a 
-set of all accumulation points, it could be the 
-case a \emph{supremum} exists, but a maximum doesn't.}
-exists or not. The next section is dedicated to properly 
-establishing this notion and filling any holes of this 
+and whether a true maximum\footnote{if you consider a
+	set of all accumulation points, it could be the
+	case a \emph{supremum} exists, but a maximum doesn't.}
+exists or not. The next section is dedicated to properly
+establishing this notion and filling any holes of this
 concept which we have in mind.
 
 \section{Introducing Limit Superior}
 
-We'll walk through a few equivalent definitions and give 
-the proper proofs wherever necessary. We will start with 
-the subsequential limits definition and then move onto 
+We'll walk through a few equivalent definitions and give
+the proper proofs wherever necessary. We will start with
+the subsequential limits definition and then move onto
 the more \emph{harder} definition which allows for easier
 computation of the limit superior.
 
 \begin{center}
-	{\color{red}\textbf{Disclaimer:}} All the sequences
-	are bounded unless stated otherwise.
+	{\color{red}\textbf{Note:}} All the sequences
+	are \textbf{bounded} unless stated otherwise.
 \end{center}
 
 \subsection{Largest Accumulation Point/Subsequential Limit}
@@ -231,28 +233,28 @@ We want to find $\sup(V)$, for which we shall use
 $V$ is bounded above and non-empty. The following
 lemma will do it.
 
-\begin{lemma}
+\begin{lemma}\label{lem:subseq_lim_bounded-non-empty}
 	$V$ is bounded above and non-empty.
 \end{lemma}
 \begin{proof}
 	Let $u \in \RR$ be an \emph{accumulation point} or a
 	\emph{subsequential limit}. Thus, there exists some
-	subsequence $\{a_{n_k}\}_{k \ge 1}$ such that 
+	subsequence $\{a_{n_k}\}_{k \ge 1}$ such that
 	$a_{n_k} \to u$ as $k \to \infty$. Since $a_n$ is
-	bounded, there exists some $M > 0$ such that 
-	$-M \le a_n \le M$ for all $n \ge 1$. Therefore, 
+	bounded, there exists some $M > 0$ such that
+	$-M \le a_n \le M$ for all $n \ge 1$. Therefore,
 	\[-M \le a_{n_k} \le M \quad \text{for all $k \ge 1$.}\]
 	Taking $m \to \infty$ on both the sides with aid of
 	\Cref{thm:lim_ineq}, we shall $|u| < M$ for any
-	accumulation point $u$ of $a_n$, proving that 
+	accumulation point $u$ of $a_n$, proving that
 	$V$ \textbf{is bounded}.
 
-	Since $a_n$ is bounded, we know that via 
+	Since $a_n$ is bounded, we know that via
 	\nameref{thm:bolzano_weirstrass}, there exists a
 	subsequence $\{a_{m_k}\}_{k \ge 1}$ such that
-	$a_{m_k} \to t$ 
+	$a_{m_k} \to t$
 	for some $t \in \RR$. Since $t$ is a \emph{subsequential
-	limit}, it must be an \emph{accumulation point}, which 
+		limit}, it must be an \emph{accumulation point}, which
 	shows $t \in V \implies V \ne \emptyset$.
 \end{proof}
 
@@ -272,15 +274,15 @@ the following.
 	below $\limsup$ in a latter section.
 \end{remark*}
 
-We have finally setup the definition of the limit 
-superior. A question still remains\dots Is the supremum 
+We have finally setup the definition of the limit
+superior. A question still remains\dots Is the supremum
 attainable? The answer turns out to be a \textbf{yes.}
-The following lemma is from Rudin but is very crucial 
-to get a better understanding about the `distribution' of 
+The following lemma is from Rudin but is very crucial
+to get a better understanding about the `distribution' of
 \emph{accumulation points} on the real line.
 
 If a student wants to freshen up on the concept of what a
-`closed' set is, then they can refer \textbf{here} in the 
+`closed' set is, then they can refer \textbf{here} in the
 appendix.
 
 \begin{lemma}
@@ -292,10 +294,17 @@ appendix.
 	To be added\dots
 \end{proof}
 
+\begin{exercise}
+	Prove that the supremum of a bounded closed set
+	exists inside the set. Therefore, show that the
+	$\sup(V) \in V$.
+\end{exercise}
+
+
 \begin{exercise}[General Metric Spaces]
-	Write a general result, replacing $\RR$ by a general 
+	Write a general result, replacing $\RR$ by a general
 	metric space $(X,d)$ where $X$ is the set of elements
-	and $d$ is the distance function. Write a formal 
+	and $d$ is the distance function. Write a formal
 	proof as well.
 \end{exercise}
 
@@ -304,62 +313,289 @@ This definition is a little difficult to handle. Finding
 accumulation points in itself takes quite some computation
 and then we are here talking about the `largest one'. In
 particular, we want some properties of this number which
-is actually useful in practice.
+are actually useful in practice.
 
-Regardless, this is simplest definition to introduce to 
+Regardless, this is simplest definition to introduce to
 a student initially. Instead of directly stating another
 equivalent definition, we'll take sometime analyzing what
-kind of behaviour should our `largest' accumulation
-point exhibit.
+kind of behaviour should our `largest'
+\emph{accumulation point} exhibit.
 
 \subsection{The Epsilon Criteria}
 
 In this subsection, we will carry-forward and build up
 more on the previous definition of limit superior.
-We wish to analyze what kind of behaviour does the 
+We wish to analyze what kind of behaviour does the
 largest \emph{accumulation point} exhibits.
 
-\begin{definition}
-	For a bounded sequence $\{a_n\}_{n \ge 1}$, let
+What happens when you nudge the $\limsup$ slightly?
+Let $s^\ast = \limsup a_n$, what happens if you consider
+which is slightly greater than $s^\ast$? For now,
+$y = s^\ast + \epsilon$ for some $\epsilon > 0$. Since it
+is greater than $\sup(V)$, $y$ is definitely \textbf{NOT}
+an \emph{accumulation point}.
+
+Recall via the proof of $V$ being non-empty and bounded,
+if there are infinitely many terms greater than $y$,
+then via \nameref{thm:bolzano_weirstrass}, we will get
+an \emph{accumulation point} strictly greater than
+$s^\ast$, which is absurd since $s^\ast$ is the maximum
+such real. Thus, we may conclude that there are only
+finitely $n \in \NN$ such that $y = s^\ast + \varepsilon
+	> a_n$.
+
+What if you nudge the $s^\ast$ backwards? This time,
+let $z = s^\ast - \varepsilon$. By the very definition
+of $\sup(V)$, there exists some $v \in V$ such that
+$z < v \le s^\ast$. From here, its easy to conclude that
+there are inifinitely many $n$ such that
+$z = s^\ast - \varepsilon < a_n$. All our discussion till
+now, can be summarized in the following theorem.
+
+\begin{theorem}
+	For any bounded real sequence $\{a_n\}_{n \ge 1}$, let
+	$s^\ast = \limsup_{n \to \infty} a_n$, then
+	\begin{itemize}
+		\item for any $\varepsilon > 0$, there are
+		      finitely many $n$ satisfying
+		      $s^\ast + \varepsilon < a_n$;
+		\item for any $\varepsilon > 0$, there are
+		      infinitely many $n$ satisfying
+		      $s^\ast - \varepsilon < a_n$.
+	\end{itemize}
+\end{theorem}
+
+\begin{proof}
+	To be added\dots
+\end{proof}
+
+The above theorem is \textbf{extremely useful} when dealing
+with $\limsup$ or $\liminf$(with the appropriate changes).
+The above two properties are quite unique, in the sense
+only the $\limsup$ satisfies both the above properties
+together. Let's state this ``uniqueness'' property clearly.
+
+\begin{lemma}
+	For a bounded sequence $\{a_n\}_{n \ge 1}$, if
 	$s^\ast \in \RR$ such that
 	\begin{itemize}
 		\item For any $\varepsilon > 0$, there are
 		      finitely many $n$ satisfying
-		      $s^\ast + \varepsilon > a_n$;
+		      $s^\ast + \varepsilon < a_n$;
 		\item For any $\varepsilon > 0$, there are
 		      infinitely many $n$ satisfying
 		      $s^\ast - \varepsilon < a_n$.
 	\end{itemize}
-
 	Then there is only one $s^\ast \in \RR$ which
-	satisfies both of these properties. Therefore, we 
-	now define
-	\[ \displaystyle s^\ast \coloneqq \varlimsup_{n \to \infty} a_n.\]
-\end{definition}
+	satisfies both of these properties.
+\end{lemma}
 
+\begin{proof}
+	To be added\dots
+\end{proof}
+
+Magic! We already know that $\limsup a_n$ satisfies both
+of the properties and due to the above lemma, we now know
+$\limsup a_n$ is the only number which can satisfy both the
+properties together. Therefore, the concept of
+$\limsup$ could be purely defined in terms of this
+$\varepsilon$-crteria. We won't do that here, but the
+theorem stated above will be a very important result which
+will be consitently used in proofs regarding $\limsup$
+and $\liminf$ later on.
+
+\begin{exercise}[Optional]
+	Write down the definition of
+	$\limsup_{n \to \infty} a_n$ purely in terms of
+	the $\varepsilon$-criteria. Note that, the definition
+	is completely useless unless you actually find a
+	suitable candidate for $s^\ast$.
+\end{exercise}
 
 \subsection{Tailed Supremums}
+This definition of $\limsup$ is arguably the most
+important definition and what is mostly presented in
+textbooks. We'll try to give some motivation, as to why
+would one come up with such a definition in the
+first place.
+
+
 
 \subsection{The Limit Inferior}
 
+We have not given any attention to limit inferior
+in our discussion. Limit Inferior has completely the same
+idea as limit superior, but this time we want to look at
+the `smallest' \emph{accumulation point}.
+
+All the results that were true for $\limsup$ are
+true with $\liminf$, with only slight modifications.
+Sometimes we might have to change the sign of the
+inequality, replace the word `greatest' with `smallest'.
+
+The attentive readers should have no problem in
+deciphering the concept of limit inferior. Thus, we
+leave it as an exercise.
+
+\begin{exercise}[Limit Inferior]
+	Try to reconstruct the entire article upto Section 2,
+	but instead of talking about the $\limsup$, the
+	reconstructed article should focus on $\liminf$ as
+	the main subject.
+\end{exercise}
+
 \subsection{Useful Results}
+
+\begin{theorem}\label{thm:limsup_liminf_equal}
+	For any real valued bounded sequence
+	$\{a_n\}_{n \ge 1}$,
+	\[\limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n = a \iff \lim_{n \to \infty} a_n = a. \]
+\end{theorem}
+
+\begin{theorem}[Monotonicity]
+	Let $\{a_n\}_{n \ge 1}$ and $\{b_n\}_{n \ge 1}$
+	satisfy $a_n \ge b_n$ for all $n \ge 1$. Then
+	\begin{align*}
+		\limsup_{n \to \infty} a_n & \ge \limsup_{n \to \infty} b_n \\
+		\liminf_{n \to \infty} a_n & \ge \liminf_{n \to \infty} b_n
+	\end{align*}
+
+\end{theorem}
+
 
 \subsection{Heuristics: When to use it?}
 
+There are quite a few applications.
+
+\begin{enumerate}
+	\item One can solve problems related related to
+	      finding the limit superior and limit inferior.
+	      This sounds artificial but it is definitely
+	      an application.
+
+	\item $\limsup$ and $\liminf$ always exist! So,
+	      whenever we are solving a problem, we
+	      can't apply theorems like \Cref{thm:lim_ineq}.
+	      Although, any theorem regarding $\limsup$
+	      and $\liminf$ can be applied almost everywhere!
+
+	\item This is a very useful tool for showing that
+	      the limit exists, courtesy to
+	      \Cref{thm:limsup_liminf_equal}. This tool
+	      which we have developed can be replaced by
+	      first principles(some $\varepsilon-\delta$
+	      arguments) rather than analyzing the
+	      \emph{accumulation points}. Although, thinking
+	      in terms of \emph{accumulation points} hugely
+	      simplifies our proofs and is a good direction
+	      to think in.
+
+	\item The next section will present some theorems
+	      where this new notion of $\limsup$ makes
+	      stating these results extremely easy. The root
+	      and ratio tests for convergence of series is a
+	      very good example which we shall cover later.
+\end{enumerate}
+
+To put it in a few words, \emph{if you don't know whether
+	the limit exists or not, then take the help of your
+	best ally,} the limit superior.
+
 \newpage
+
+\section{Brief Note on Extended Reals and Unbounded Sequences}
+Throughout the article, we have only dealt with
+bounded sequences. What happens if the sequence is
+unbounded? The `largest' \emph{accumulation point} of a
+sequence breaks down\dots If you try to imitate the proof
+\Cref{lem:subseq_lim_bounded-non-empty}, showing $V$
+bounded is not possible since a subsequence might
+converge to $\pm\infty$.
+
+Therefore, if the sequence is unbounded we would like to
+work with extended reals, which is
+\[\ol\RR \coloneqq \RR \cup \{ +\infty, -\infty \} \]
+
+When working with extended reals, we know that
+$\sup(V)$ always exists(just need to ensure
+$V \ne \emptyset$) in $\ol\RR$. There are quite a few
+conventions and definitions one needs to know when
+working with extended reals, but the following will
+suffice.
+
+\begin{enumerate}
+	\item $0\times \pm\infty$ and $\pm\infty \times 0$
+	      are undefined.
+
+	\item $\infty - \infty$ is undefined.
+
+	\item $\infty + a = a + \infty = \infty$ for all
+	      $a \in \RR$.
+
+	\item $a + (-\infty) = (-\infty) + a = -\infty$ for
+	      $a \in \RR$.
+\end{enumerate}
+
+The discussion for unbounded sequences is rather trivial,
+we've dealt with the non-trivial part already. Therefore,
+for brevity here is a sketch how to move from one
+definition to the other.
+
+\begin{itemize}
+	\item Hello.
+\end{itemize}
+
 \section{Few Applications}
 
 \subsection{Artifical Problems}
 
 \subsection{The Ratio and Root Tests}
+\begin{theorem}[Root Test]
+	Consider a real-valued sequence $\{a_n\}_{n \ge 1}$.
+	Define
+	\[\alpha \coloneqq \limsup_{n \to \infty} = \sqrt[n]{|a_n|}. \]
+	Then
+	\begin{enumerate}
+		\item if $\alpha < 1$, $\sum a_n$ converges;
+		\item if $\alpha > 1$, $\sum a_n$ diverges;
+		\item if $\alpha = 1$, the test is inconclusive.
+	\end{enumerate}
+	Moreoever, whenever $\alpha < 1$, the convergence
+	is \emph{absolute}.
+\end{theorem}
+
+\begin{proof}
+	To be added\dots
+\end{proof}
+
+\begin{theorem}[Ratio Test]
+	For a real-valued sequence $\{a_n\}_{n \ge 1}$,
+	with $a_n \ne 0$ for $n > N$ for some $N \in \NN$,
+	define
+	\[\beta \coloneqq \limsup_{n \to \infty} \left| \frac{a_{n+1}}{a_n}\right|.\]
+	Then
+	\begin{enumerate}
+		\item if $\beta < 1$, $\sum a_n$ converges;
+		\item if $\beta > 1$, $\sum a_n$ diverges;
+		\item if $\beta = 1$, the test is inconclusive.
+	\end{enumerate}
+	Moreover, whenever $\beta < 1$, the convergence
+	is \emph{absolute}.
+\end{theorem}
+
+\begin{proof}
+	To be added\dots
+\end{proof}
+
 
 \subsection{Radius of Convergence of Power Series}
 
 \subsection{An Example from Probability Theory}
-This one too niche, regardless a good example. If one is 
-not aware of the notion of weak convergence/convergence 
-in distribution in probability theory, then feel free to
-skip this one for now.
+This one is too niche, regardless a good example.
+If one is not aware of the notion of
+weak convergence/convergence in distribution in
+probability theory, then feel free to skip this one
+for now.
 
 \begin{prob*}{(No Atoms in Weak Convergence)}{}
 	Let $(\Omega, \mathcal F, \mathbb P)$ be a
@@ -370,21 +606,81 @@ skip this one for now.
 	\[\lim_{m \to \infty} \mathbb{P}(X_m = a) = \mathbb{P}(X = a) = 0.  \]
 \end{prob*}
 
+\begin{sol}
+	Let $F_n$ denote the CDF of $X_n$. Since $F_n$ is
+	monotonically increasing, there are only countable
+	discontinuities of $F_n$. Therefore, we may choose
+	a strictly decreasing sequence
+	$\{\delta_m\}_{m \ge 1}$ approaching $0$ such that
+	$a-\delta_m$ and $a+\delta_m$ are both continuity
+	points $F_X$ for all $m \ge 1$. Observe,
+	\begin{align*}
+		\PP(X_n = a) & \le \PP\left(X_n \in (a-\delta_m, a+\delta_m]\right) \\
+		             & = F_n(a+\delta_m) - F_n(a - \delta_m)
+	\end{align*}
+	Since $a+\delta_m$ and $a-\delta_m$
+	were chosen to be continuity points of $F_X$, the
+	limit as $n \to \infty$ of $F_n(a+\delta_m)$
+	and $F_n(a - \delta_m)$ exists and is precisely
+	$F_X(a + \delta_m)$ and $F_X(a - \delta_m)$.
+	Taking $\limsup_{n \to \infty}$ on both the sides
+	with help of \Cref{thm:limsup_liminf_equal}, we get
+	\[\limsup_{n \to \infty} \PP(X_n = a) \le F_X(a + \delta_m) - F_X(a - \delta_m) \]
+	for all $m \ge 1$. Once again, since $a+\delta_m$
+	and $a - \delta_m$ are continuity points of $F_X$,
+	if we take $m \to \infty$ on both the sides,
+	$F_X(a + \delta_m) \to F_X(a)$ and
+	$F_X(a - \delta_m) \to F_X(a)$ since $a$ is a point
+	of continuity. This yields
+	\[\limsup_{n \to \infty} \PP(X_n = a) \le 0 \implies \limsup_{n \to \infty} \PP(X_n = a) = 0 \]
+	Since $\PP(\bullet) \ge 0$, taking $\liminf$ both
+	sides gives
+	\[0 \le \liminf_{n \to \infty} \PP(X_n = a) \le \limsup_{n \to \infty} \PP(X_n = a) = 0,  \]
+	forcing both $\limsup$ and $\liminf$ to be
+	equal to $0$, which proves
+	\[\lim_{n \to \infty} \PP(X_n = a) = 0 \]
+	completing the proof.
+\end{sol}
+
 \section{Limit Superior and Limit Inferior of Sets}
+Being a student at ISI Kolkata, I feel the most natural
+application to this concept is in Probability Theory.
+We shall discuss a few examples later, for now we shall
+only consider examples which are more related to the real
+line.
 
-\subsection{}
 
-\section{Brief Note on Extended Reals}
+\subsection{Connection with Limit Superior/Inferior of Sequences}
+
+\subsection{Applications in Probability Theory}
+
 
 \newpage
 \section{Practice Problems}
 
+\begin{problem}[Alternate Definition]
+Let $\{x_n\}_{n \ge 1}$ be a bounded real sequence.
+We now define
+\begin{enumerate}
+	\item The limit superior of $x_n$ is the
+	      infimum of set $V$ of $v \in \RR$ such that
+	      $v < x_n$ for at most a finite number of
+	      $n \in \NN$.
+
+	\item The limit inferior of $x_n$ is the supremum of
+	      the set $W$ of $w$ such that $x_m < w$ for at
+	      most a finite number of $m \in \NN$.
+\end{enumerate}
+Show that the above definition is the same as tail-end
+definition of $\limsup$ which we have discussed earlier.
+\end{problem}
+
 \begin{problem}[First Borel-Cantelli Lemma]
-	Given a probability space $(\Omega, \mathcal F, \PP)$
-	and a sequence events $\{A_n\}_{n \ge 1}$ where 
-	$A_m \in \mathcal F$ for all $m \in \NN$, then prove
-	that 
-	\[\sum_{i = 1}^\infty \PP(A_i) < \infty \implies \PP\left(\limsup_{n \to \infty} A_n\right) = 0.\]
+Given a probability space $(\Omega, \mathcal F, \PP)$
+and a sequence events $\{A_n\}_{n \ge 1}$ where
+$A_m \in \mathcal F$ for all $m \in \NN$, then prove
+that
+\[\sum_{i = 1}^\infty \PP(A_i) < \infty \implies \PP\left(\limsup_{n \to \infty} A_n\right) = 0.\]
 \end{problem}
 
 \newpage
@@ -392,6 +688,19 @@ skip this one for now.
 \section{Appendix}
 
 \subsection{Standard Facts from Analysis-I}
+
+\begin{definition}[Limit Points]
+	$u \in \RR$ is said to be a \emph{limit point} of
+	$A \subseteq \RR$ if for any $\varepsilon > 0$,
+	there exists some $u^\ast \in A$ such that
+	\[u^\ast \in (u - \varepsilon, u + \varepsilon)\setminus \{u\}. \]
+\end{definition}
+
+\begin{definition}[Closed Sets]
+	A subset $A \subseteq \RR$ is said to
+	\emph{closed set} if it contains all its limit points.
+\end{definition}
+
 
 \begin{axiom}[The Completeness Axiom]\label{axiom:completeness}
 	For any non-empty $A \subset \RR$ bounded above, the
@@ -404,7 +713,7 @@ skip this one for now.
 \end{theorem}
 
 \begin{theorem}[Bolzano Weirstrass]\label{thm:bolzano_weirstrass}
-	For any bounded sequence $\{b_n\}_{n \ge 1}$, there 
+	For any bounded sequence $\{b_n\}_{n \ge 1}$, there
 	exists a convergent subsequence
 	$\{b_{n_k}\}_{k \ge 1}$.
 \end{theorem}

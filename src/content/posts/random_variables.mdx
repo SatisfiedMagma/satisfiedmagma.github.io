@@ -142,7 +142,7 @@ Due to the construction by Vitalli, we know that not all
 subsets of $\RR$ can be assigned a probability with the 
 function $\P$. Thus we resort to what we call the 
 Borel $\sigma-$algebra over $\RR$. Consider the usual metric 
-topology[^1] on $\RR$ where let $\tau$ denote the set of all
+topology[^1] on $\RR$ where we let $\tau$ denote the set of all
 open sets[^2] of $\RR$. Then we define 
 $$
 \mathcal{B}(\RR) \coloneqq \sigma(\tau)
@@ -163,9 +163,9 @@ countable union of open intervals.
 
 <div class="proof">
 
-See [on stackexchange](https://math.stackexchange.com/a/396299). $\quad\square$
+See [on stackexchange](https://math.stackexchange.com/a/318303). If the notation feels too weird, ask ChatGPT to simplify
+the proof for you. $\quad\square$
 </div>
-
 With this, we have the luxury to define the borel-sigma 
 algebra way more freely. We will now state a really 
 really important lemma. If you really want to prove this
@@ -373,13 +373,13 @@ an enumeration of $\QQ$. We have the following claim.
 The proof to the claim is extremely simple. If
 $\omega \in Y^{-1}(x, \infty)$, then we know
 $$
-X_1(\omega) > X_2(\omega) - x
+X_1(\omega) > x - X_2(\omega)
 $$
 Since these two quantities are different, by density of 
 $\QQ$ over $\RR$, we know there must exist some index $j$
 such that 
 $$
-X_1(\omega) > q_j > X_2(\omega) - x
+X_1(\omega) > q_j > x - X_2(\omega)
 $$
 which immediately gives $\omega \in \bigcup_{i = 1}^\infty \{\omega: X_1(\omega) > q_i\} \cap \{\omega: X_2(\omega) >x - q_i \}.$ The other direction is rather trivial, so we shall 
 skip it.
@@ -646,6 +646,18 @@ $f$ was a measurable function from $\RR \to \RR$, i.e.,
 for any Borel set $B$, $f^{-1}(B) \in \mathcal{B}(\RR)$, 
 even then the conclusion holds true.
 
+### Product of Two Random Variables
+
+If $X,Y$ are two random variables, then $X+Y$ is also a 
+random variable. By the above theorem,
+$(X+Y)^2 = X^2 + 2XY + Y^2$ is also a random variable.
+Also, $X^2$ and $Y^2$ are random variables.
+Thus, 
+$$
+XY = \frac 1 2 \left( (X+Y)^2 - X^2 - Y^2\right)
+$$
+which concludes that $XY$ must be a random variable as well.
+
 # Appendix
 
 ## Two Essential Lemmas for Sigma Fields
@@ -763,7 +775,10 @@ the multiplication of infinity with $0$ to be $0$.
 ## Borel Sigma Algebra over Extended Reals
 
 I'll brief the idea as to how someone can topologically 
-describe open sets of $\ol\RR$.
+describe open sets of $\ol\RR$. If someone wants a shortcut,
+then you can simply define $\mathcal{B}(\ol\RR) \coloneqq
+\sigma(D)$ where $D = \{[-\infty, a]: a \in \RR \}$. Life
+will be fine with definition.
 
 We will construct a homeomorphism in a topological
 sense(this approach is Exercise 33, in Chapter 1 of [A Probability Path](https://link.springer.com/book/10.1007/978-1-4612-1818-0) by Sidney Resnick) from $[-1,1] \to \ol\RR$

@@ -420,7 +420,6 @@ would one come up with such a definition in the
 first place.
 
 
-
 \subsection{The Limit Inferior}
 
 We have not given any attention to limit inferior
@@ -460,6 +459,32 @@ leave it as an exercise.
 		\liminf_{n \to \infty} a_n & \ge \liminf_{n \to \infty} b_n
 	\end{align*}
 
+\end{theorem}
+
+
+\begin{theorem}
+	Let $\{a_n\}_{n \ge 1}$ be a real-valued bounded
+	sequence and $x \in \RR$ be some real number, then the
+	following statements are true.
+	\begin{itemize}
+		\item $a_n > x$ for infinitely many $n$ iff
+		      $\limsup_{n \to \infty} a_n > x$;
+		\item $a_n < x$ for infinitely many $n$ iff
+		      $\liminf_{n \to \infty} a_n < x$.
+	\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Sub-additivity]
+	For two real bounded sequences $\{a_n\}_{n \ge 1}$
+	and $\{b_n\}_{n \ge 1}$, we must have
+	\begin{enumerate}
+		\item $\displaystyle \limsup_{n \to \infty} (a_n + b_n) \le \limsup_{n \to \infty} a_n + \limsup_{n \to \infty} b_n$
+		\item $\displaystyle \liminf_{n \to \infty} (a_n + b_n) \ge \liminf_{n \to \infty} a_n + \liminf_{n \to \infty} b_n$
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+	haha
 \end{theorem}
 
 
@@ -658,6 +683,7 @@ line.
 \newpage
 \section{Practice Problems}
 
+\subsection{Analysis Problems}
 \begin{problem}[Alternate Definition]
 Let $\{x_n\}_{n \ge 1}$ be a bounded real sequence.
 We now define
@@ -675,12 +701,45 @@ Show that the above definition is the same as tail-end
 definition of $\limsup$ which we have discussed earlier.
 \end{problem}
 
+\begin{problem}[Equality Case]
+Let $\{a_n\}_{n \ge 1}$ be a convergent sequence with $a_n \to a \in \mathbb{R}$, and let $(b_n)$ be any real sequence. Prove that
+\[
+	\limsup_{n\to\infty} (a_n + b_n) = a + \limsup_{n\to\infty} b_n
+\]
+and
+\[
+	\liminf_{n\to\infty} (a_n + b_n) = a + \liminf_{n\to\infty} b_n.
+\]
+\end{problem}
+
+\begin{problem}
+Let $\{a_n\}_{n \ge 1}$ and $\{b_n\}_{n \ge 1}$ be sequences of real numbers. Suppose $a_n \to a$ with $a > 0$. Prove that
+\[
+	\limsup_{n\to\infty} (a_n b_n) = a \limsup_{n\to\infty} b_n
+\]
+and
+\[
+	\liminf_{n\to\infty} (a_n b_n) = a \liminf_{n\to\infty} b_n.
+\]
+What happens if $a < 0$? What if $a = 0$?
+\end{problem}
+
+\subsection{Probability Problems}
 \begin{problem}[First Borel-Cantelli Lemma]
 Given a probability space $(\Omega, \mathcal F, \PP)$
 and a sequence events $\{A_n\}_{n \ge 1}$ where
 $A_m \in \mathcal F$ for all $m \in \NN$, then prove
 that
+
 \[\sum_{i = 1}^\infty \PP(A_i) < \infty \implies \PP\left(\limsup_{n \to \infty} A_n\right) = 0.\]
+\end{problem}
+
+\begin{problem}
+	For a sequence of random variables $\{X_n\}_{n \ge 1}$ 
+	in the probability space $(\Omega, \mathcal F, \PP)$ 
+	satisfying
+\[\PP(X_n < a \,\,\text{i.o. in $n$ and } X_n > b\,\,\text{i.o. in $n$}) = 0,\]
+prove that $X_n$ converges almost surely.
 \end{problem}
 
 \newpage
@@ -701,7 +760,6 @@ that
 	\emph{closed set} if it contains all its limit points.
 \end{definition}
 
-
 \begin{axiom}[The Completeness Axiom]\label{axiom:completeness}
 	For any non-empty $A \subset \RR$ bounded above, the
 	supremum of $A$ or $\sup(A)$ exists in $\RR$.
@@ -718,5 +776,10 @@ that
 	$\{b_{n_k}\}_{k \ge 1}$.
 \end{theorem}
 
+\section{References}
+
+\begin{enumerate}
+	\item \href{https://encyclopedia.pub/entry/37221}{website1}
+\end{enumerate}
 
 \end{document}

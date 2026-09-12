@@ -458,19 +458,22 @@ leave it as an exercise.
 		\limsup_{n \to \infty} a_n & \ge \limsup_{n \to \infty} b_n \\
 		\liminf_{n \to \infty} a_n & \ge \liminf_{n \to \infty} b_n
 	\end{align*}
-
 \end{theorem}
 
 
-\begin{theorem}
+\begin{theorem}\label{thm:bounds_on_limsup}
 	Let $\{a_n\}_{n \ge 1}$ be a real-valued bounded
 	sequence and $x \in \RR$ be some real number, then the
 	following statements are true.
 	\begin{itemize}
-		\item $a_n > x$ for infinitely many $n$ iff
-		      $\limsup_{n \to \infty} a_n > x$;
-		\item $a_n < x$ for infinitely many $n$ iff
-		      $\liminf_{n \to \infty} a_n < x$.
+		\item $\limsup_{n \to \infty} a_n > x$ iff there
+		      exists some $\varepsilon > 0$ such that
+		      $a_n > x + \varepsilon$ for infinitely many
+		      $n \in \NN$;
+		\item $\liminf_{n \to \infty} a_n < x$ iff there
+		      exists some $\varepsilon > 0$ such that
+		      $a_n < x - \varepsilon$ for infinitely many
+		      $n \in \NN$.
 	\end{itemize}
 \end{theorem}
 
@@ -724,6 +727,27 @@ and
 What happens if $a < 0$? What if $a = 0$?
 \end{problem}
 
+\begin{problem}
+This problem is closely related to \Cref{thm:bounds_on_limsup}. For bounded sequence $\{a_n\}_{n \ge 1}$ and
+$a \in \RR$, show that
+
+\begin{itemize}
+	\item $\limsup_{n \to \infty} a_n \ge a \iff$ for all
+	      $\varepsilon > 0$ we have
+	      $a_n > a - \varepsilon$ for infinitely many
+	      $n \in \NN$;
+
+	\item $\limsup_{n \to \infty} a_n \le a \iff$ for
+	      all $\varepsilon > 0$ there exists some
+	      $N \in \NN$ such that we have
+	      $a_n \le a + \varepsilon$ for $n > N$;
+
+	\item $\limsup_{n \to \infty} a_n < a \iff$ there
+	      exists $\varepsilon > 0$ and $N \in \NN$ such 
+		  that $a_n \le a - \varepsilon$ for $n > N$.
+\end{itemize}
+\end{problem}
+
 \subsection{Probability Problems}
 \begin{problem}[First Borel-Cantelli Lemma]
 Given a probability space $(\Omega, \mathcal F, \PP)$
@@ -735,9 +759,9 @@ that
 \end{problem}
 
 \begin{problem}
-	For a sequence of random variables $\{X_n\}_{n \ge 1}$ 
-	in the probability space $(\Omega, \mathcal F, \PP)$ 
-	satisfying
+For a sequence of random variables $\{X_n\}_{n \ge 1}$
+in the probability space $(\Omega, \mathcal F, \PP)$
+satisfying
 \[\PP(X_n < a \,\,\text{i.o. in $n$ and } X_n > b\,\,\text{i.o. in $n$}) = 0,\]
 prove that $X_n$ converges almost surely.
 \end{problem}

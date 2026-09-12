@@ -1,0 +1,209 @@
+---
+title: "Primitive Roots Modulo a Prime"
+pubDate: 2026-09-12
+description: "A standard result which students use in Olympiad Number Theory, is that given any prime, there necessarily exists a primitive root modulo that prime. The proof is often omitted in textbooks, but today we shall cover it rigorously in the language of Abstract Algebra."
+author: 'Pragyan Pranay'
+image:
+    url: 'https://isiadms3public.s3.ap-south-1.amazonaws.com/images/isilogo.png'
+    alt: 'random-variables'
+tags: ["number-theory", "algebra", "orders", "primitive-roots", "olympiads"]
+---
+import Lemma from '../../components/theorems/Lemma.astro';
+import Theorem from '../../components/theorems/Theorem.astro';
+import Claim from '../../components/theorems/Claim.astro';
+import Problem from '../../components/theorems/Problem.astro';
+import Definition from '../../components/theorems/Definition.astro';
+
+Yes, a blog after a long time. I had my mid semestral 
+examinations I wanted to get decent grades this time. Alas,
+god has different plans... These exams didn't go very well, 
+but okay at least I will pass in all the subjects. I'm 
+happy for that at the very least.
+
+This blog-post is just me adapting a proof which I wrote
+last year when I was learning basic structures like fields, 
+groups and rings. I was very happy when I learned how I 
+could show the existence of primitive roots, because this 
+was something which I couldn't do back when I was doing
+Olympiads.
+
+# Basic Definitions
+I shall assume that the reader is faimiliar with the notion
+of orders and knows a proof to Fermat's Little Theorem.
+Recall the definition of primitive root modulo $p$.
+
+<Definition title="Primitive Roots">
+
+We say that $a$ is a primitive root $\bmod \,p$ if
+$\ord_p(a) = p-1$.
+</Definition>
+
+Also, recall the following useful lemma.
+
+<Lemma>
+
+If $a^n \equiv 1 \pmod p$ then $\ord_p(a) \mid n$.
+In particular, due to Fermat's Little Theorem we have
+$\ord_p(a) \mid p-1$.
+</Lemma>
+
+Therefore, $a$ is a primitive root if it hits its maximal
+possible order. There are even more ways to think about
+it, for example, if $a$ is a primitive root, then
+$\{a,a^2,\dots,a^{p-1} = 1 \} = \{ 1, 2, 3, \dots, p-1 \}$
+where the elements are taken modulo $p$. Thus, one may 
+say that powers of $a$ generate the entire residue set 
+modulo $p$.
+
+## A Rigorous Setup
+
+In high-school, we consider $1,2,\dots, p-1$ as remainders
+modulo $p$, but as one shifts to higher-math, we would
+like to treat it as more _concrete_ mathematical objects. 
+This is basically achieved by considering the quotient
+group $(\ZZ/p\ZZ)^\ast$ which consists of elements
+$\{\ol{1}, \ol 2, \dots, \ol{p-1} \}$, basically the 
+non-zero cosets of $p\ZZ$. We wish to show that this 
+group is cyclic under the operation of $\times$(we might
+use the notation of $\cdot$).
+
+The cooler fact is, that while working $\bmod\, p$ inverses
+always exist. So, as a matter of fact the tuple 
+$(\ZZ/p\ZZ, +, \times)$ forms a field. We denote this 
+field by $\FF_p$, that is a finite field with $p$ elements. 
+
+# Preliminaries
+
+We'd need a few results from groups and fields before
+going into the proof of the main result. The first result 
+is called the Lagrange's Theorem in context of polynomials
+of fields. Don't confuse it between the theorem of 
+number of cosets and the index of a subgroup. The latter 
+theorem is a standard lemma in books like Dummit and Foote.
+
+<Theorem title="Lagrange's Theorem">
+
+For any non-constant polynomial $f \in \FF_p[x]$, there are 
+at most $\deg(f)$ solutions to the equation $f(x) = 0$ for 
+$x \in \FF_p$.
+
+</Theorem>
+
+<div class="proof">
+
+We shall prove the result by induction on $\deg(n)$. For
+the case, we have the lienar equation $ax + b = 0$ for 
+$a,b \in \FF_p$ where $a \ne 0$. By existence of unique
+multiplicative inverses in $\FF_p$, we know that
+
+$$
+ax + b = 0 \iff x = -b\cdot a^{-1}
+$$
+
+which resolves the base case. As an induction hypothesis,
+assume that any polynomial $Q \in \FF_p[x]$ with
+$\deg(Q) = n$ has at most $n$ solutions. We now need to 
+show that for any polynomial $P \in \FF_p[x]$ with 
+$\deg(P) = n + 1$, it has at most $n+1$ solutions.
+
+If $P$ has no roots, then we are done. If $P$ has at least
+one root, call it $\gamma \in \FF_p$, then by Factor Theorem
+over any ring, we may write
+$$
+P(x) = (x-a)\cdot T(x)
+$$
+for $T \in \FF_p[x]$ where $\deg(T) = n$. Applying the 
+induction hypothesis on $T$, we know that $T$ has at most
+$n$ roots. Adding one more root $a$, we know that $P$ can 
+have at most $n+1$ roots, which completes the induction 
+and the proof to the theorem. $\blacksquare$
+
+</div>
+
+
+<Lemma title="Order of Higher Powers">
+
+For a group $G$ and $x \in G$, if $\ord(x) = n < \infty$ 
+for some $x \in G$, then
+$$
+\ord(x^a) = \dfrac{n}{\gcd(n,a)}
+$$
+for any $a \in \ZZ \setminus \{ 0\}$.
+
+</Lemma>
+
+I will leave this lemma unproven. It is a good exercise 
+for the readers to show the above result.
+
+# The Main Proof
+
+Let's state the theorem formally before we get into the
+proof.
+
+<Theorem title="Generator Modulo p">
+
+$(\ZZ/p\ZZ)^\ast$ is cyclic over the operation $\times$.
+</Theorem>
+
+<div class="proof">
+By Fermat's Little Theorem, we know that 
+
+$$
+\FF_p[x] \ni g(x) = x^{p-1} - 1
+$$
+
+has exactly $p-1$ roots in $\FF_p$.
+
+<Claim> $x^d - 1$ has exactly $d$ roots in $\FF_p$ where $d \mid p-1$. </Claim>
+
+<div class="proof">
+The proof to this claim is simple, just observe
+$$
+x^{p-1} - 1 = x^{dk} - 1 = (x^d-1)(x^{d(k-1)}+x^{d(k-2)} + \dots + 1)
+$$
+where we write $p = dk - 1$ for some $k \in \ZZ$. By
+Lagrange's Theorem, $x^d - 1$ must have exactly $d$
+solutions. $\square$
+</div>
+
+Define $A_d = \{x \in \FF_p: x \ne 0, \ord(x) = d \}$ for
+$d \mid n$. For any $a \in A_d$, consider a subgroup 
+$H = \{ a, a^2, \dots, a^d = 1 \}$. Since, any $y \in H$
+satisfies $y^d - 1 = 0$, we can deduce that any element 
+of order $d$ must be a power of $a$. Since element
+$t \in (\ZZ/p\ZZ)^\ast$ can have order $d$ only if it is a 
+power of $a$, then $t$ must be in $H$. Therefore, we now
+need to find the number of elements in $A_d$ which have
+order exactly $d$. For any $t \in H$(write $t = a^k$), 
+$$
+\ord(t) = \ord(a^k) = \dfrac{d}{\gcd(d,k)} = d \iff \gcd(d,k) = 1
+$$
+
+which gives $|A_d| = \varphi(d)$ where $\varphi$ is the 
+euler's function, which counts number of elements less than
+$d$ and relatively prime to $d$.
+
+Simply taking $d = p - 1$ to get $|A_{p-1}| = \varphi(p-1) \geq 1$ would be wrong since we assumed $A_d \neq \emptyset$ by taking $a \in A_d$. Assume $|A_{d'}| = 0$ for some $d' \mid n$, then
+$$
+    p - 1 = \sum_{d \mid p-1} |A_d| = \sum_{\substack{d \mid p-1 \\ d \neq d'}} |A_d| = \sum_{\substack{d \mid p-1 \\ d \neq d'}} \varphi(d) < \sum_{d \mid p-1} \varphi(d) = p - 1
+$$
+where we have used the fact that $\sum_{d \mid n} \varphi(d) = n$ at the end.
+
+The first equality true because every element has some
+order and must lie in exactly $A_d$. The second equality is 
+just removing that that $0$ element since $|A_{d'}| = 0$. 
+The contradiction is obvious, which finishes the proof. $\blacksquare$
+</div>
+
+## Remarks
+We not only proved that there exists at least one primitive 
+root modulo $p$, but we also proved that there are exactly 
+$\varphi(\varphi(p)) = \varphi(p-1)$ primitive roots
+modulo $p$. 
+
+Also, Lagrange's Theorem isn't anything special for the 
+field $\FF_p$. Replacing by any $\FF$ also works. We just
+highlighted the fact because it could fail over certain 
+rings. For example, consider the polynomial $f(x) = x^2-1$
+over the ring $(\ZZ/8\ZZ)^\ast$ over the operation $\times$.
+It has 4 roots, namely $1,3,5,7$. 

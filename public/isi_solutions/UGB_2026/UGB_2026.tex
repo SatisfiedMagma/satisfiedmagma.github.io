@@ -12,11 +12,11 @@
 
 \begin{abstract}
     These are unofficial solutions to ISI Entrance UGB
-	Paper, 2026. The main motivation of writing these
-	solutions is the absencse of any official solutions
-	on the internet and to help the students with the
-	technical details of proof-writing in a proof-based
-	mathematical setting.
+    Paper, 2026. The main motivation of writing these
+    solutions is the absencse of any official solutions
+    on the internet and to help the students with the
+    technical details of proof-writing in a proof-based
+    mathematical setting.
 \end{abstract}
 
 The tone of the solutions given here is very dry and
@@ -193,15 +193,63 @@ as clearly as possible.
     rationals is always rational)
     \textbf{finishing the proof to part a). \bsquare}
 
-    \paragraph{Solution to part b)} To be added, for now
-	visit the blog-post at
-	\begin{center}
-		\small
-		\url{https://satisfiedmagma.github.io/writings/posts/isi_2026_discussion/#-problem-1}
-	\end{center}
-	to see a sketch of the proof. \textbf{Thank You!}
+    \paragraph{Solution to part b)} We call a point
+    $(a,b) \in \RR^2$ \emph{rational} if both
+    $a,b \in \QQ$. We need to show that $(\alpha,\beta)$
+    is \emph{rational}. Define points $P_i = (x_i,y_i)$
+    for $i = 1,2,3$. Let $L_1$ be the line passing through
+    $P_1, P_2$. Similarly, $L_2$ is the line passing through
+    $P_2,P_3$ and $L_3$ is the line passing through
+    $P_3, P_1$.
 
+    Since $x_1, x_2, x_3$ are distinct,
+    the slopes of $L_1, L_2, L_3$ are well-defined.
+    Similarly, since $y_1, y_2, y_3$ are distinct, all
+    the slopes are non-zero. Due to \textbf{part a)},
+    if we write the equations of lines $L_i$ as
+    $y = a_i + bx_i$ respectively for some constants
+    $a_i, b_i$ where $i = 1,2,3$, then
+    $a_i, b_i \in \QQ$ for $i = 1,2,3$.
+
+    $(\alpha, \beta)$ is the circumcenter of
+    $\triangle P_1P_2P_3$, we know its the intersection
+    of perpendicular bisectors of $\ol{P_1P_2}$ and
+    $\ol{P_2P_3}$(call them $L_1'$ and $L_2'$ respectively).
+	Note that slopes of these perpendicular
+    bisectors are non-zero and well-defined because
+    $b_i \ne 0$ for $i=1,2,3$.
+
+	\begin{claim*}
+		The equations $L_1'$ and $L_2'$ have rational 
+		coefficients in the slope-intercept form.
+	\end{claim*}
+	\begin{proof}
+		The slopes of $L_1'$ and $L_2'$ are precisely 
+		$-1/b_1$ and $-1/b_2$, which takes care of
+		one coefficient. Write $y = mx + c$ for line $L_1'$.
+		We know $m \in \QQ$ and $(P_1 + P_2)/2 \in L_1'$. 
+		Putting this point in equation of $L_1'$ would 
+		yield $c \in \QQ$ as desired. Same argument
+		works for $L_2'$.
+	\end{proof}
+	
+	To end it, note that $(\alpha, \beta)$ is the unique
+	solution of the equations of lines $L_1'$ and $L_2'$. 
+	Since both of them have rational coefficients in 
+	the slope-intercept form, the solution given 
+	the pair of equations must yield a \emph{rational
+	point} which is what had to be proven.
 \end{sol}
+\begin{remark*}
+	There are other possible solutions/corollaries to the
+	problem. For example, one could show that the
+	orthocenter $H$ must also be a rational point. This 
+	can be done via the properties of the
+	\textbf{Euler Line} or just writing down the equations
+	of perendiculars from points $P_i$ to its opposite
+	side.
+\end{remark*}
+
 \newpage
 
 \section{UGB 2026/2}
@@ -1111,27 +1159,27 @@ as clearly as possible.
     \end{enumerate}
 \end{prob*}
 \begin{sol}
-	To be added\dots For now, the informal solution is
-	available on the blog
-	\begin{center}
-		\small
-		\url{https://satisfiedmagma.github.io/writings/posts/isi_2026_discussion/#-problem-8}
-	\end{center}
-	\textbf{Thank you!}
+    To be added\dots For now, the informal solution is
+    available on the blog
+    \begin{center}
+        \small
+        \url{https://satisfiedmagma.github.io/writings/posts/isi_2026_discussion/#-problem-8}
+    \end{center}
+    \textbf{Thank you!}
 \end{sol}
 \newpage
 
 \section{Concluding Remarks}
 I pretty much have summed up everything on the blog.
-Although, I would like to mention that maybe the problems 
-were on the easier side and a skilled candidate would 
-have a really easy time, but once again the entrance 
-paper has a lot of room to make error even in the simpler 
+Although, I would like to mention that maybe the problems
+were on the easier side and a skilled candidate would
+have a really easy time, but once again the entrance
+paper has a lot of room to make error even in the simpler
 problems. Proof-writing is going to make the major difference
 for the people who reach the Merit List!
 
-I hope you enjoyed reading the solutions and 
+I hope you enjoyed reading the solutions and
 learnt something new from them. It was my very
-first blog on my website and I've tried my best. This is 
+first blog on my website and I've tried my best. This is
 Magma, signing off ;)
 \end{document}
